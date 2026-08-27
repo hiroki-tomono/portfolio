@@ -21,6 +21,7 @@ import {
   skillGroups,
   works,
   career,
+  certifications,
   footer,
 } from './data/portfolio.js';
 
@@ -42,15 +43,25 @@ const esc = (value) =>
 /** カテゴリキーを解決する。未知のキーは other にフォールバック。 */
 const cat = (key) => categories[key] ?? categories.other;
 
+/** 全スキル中の最長年数。これを 100% としてバーの長さを決める。 */
+const MAX_YEARS = Math.max(...skillGroups.flatMap((g) => g.skills.map((s) => s.years)));
+
 /**
- * バーの長さ。経験年数 0年 = 20%、8年以上 = 100%。
+ * バーの長さ。0年 = 20%、最長年数 = 100%。
  * 0年でも「そこにバーがある」ことが分かるよう 20% の下駄を履かせている。
  */
-const barWidth = (years) => Math.round(Math.min(20 + (years / 8) * 80, 100)) + '%';
+const barWidth = (years) =>
+  Math.round(Math.min(20 + (years / MAX_YEARS) * 80, 100)) + '%';
 
 /** バーの濃さ。習熟度 1〜5 に対応する不透明度。 */
 const LEVEL_ALPHA = [0.12, 0.25, 0.45, 0.7, 1];
 const barAlpha = (level) => LEVEL_ALPHA[Math.min(Math.max(level, 1), 5) - 1];
+
+/** 経験年数の表示。1年未満は「◯ヶ月」に切り替える。 */
+const formatYears = (years) => {
+  if (years >= 1) return { num: Math.round(years * 10) / 10, unit: '年' };
+  return { num: Math.max(1, Math.round(years * 12)), unit: 'ヶ月' };
+};
 
 /** 空要素を落として改行で連結する。 */
 const lines = (...parts) => parts.filter(Boolean).join('\n');
@@ -83,18 +94,20 @@ const renderNav = () =>
     '          <a href="#skills">スキルセット</a>',
     flags.showWorks ? '          <a href="#works">制作物</a>' : null,
     '          <a href="#career">職務経歴</a>',
+    flags.showCertifications ? '          <a href="#certifications">資格</a>' : null,
     '        </nav>'
   );
 
 const renderLinks = () => {
+  // URL が空のままのリンクは、フラグが立っていても出力しない(リンク切れ防止)。
   const items = lines(
-    flags.showGitHub
+    flags.showGitHub && links.github
       ? `          <a class="pill pill--outline" href="${esc(links.github)}" rel="noopener noreferrer" target="_blank">GitHub</a>`
       : null,
-    flags.showZenn
+    flags.showZenn && links.zenn
       ? `          <a class="pill pill--outline" href="${esc(links.zenn)}" rel="noopener noreferrer" target="_blank">Zenn</a>`
       : null,
-    flags.showEmail
+    flags.showEmail && links.email
       ? `          <a class="pill pill--solid" href="mailto:${esc(links.email)}">Email</a>`
       : null
   );
@@ -117,6 +130,9 @@ const renderSidebar = () =>
     '        <div class="sidebar__identity">',
     `          <p class="sidebar__eyebrow">${esc(profile.eyebrow)}</p>`,
     `          <h1 class="sidebar__name">${esc(profile.name)}</h1>`,
+    profile.nameKana
+      ? `          <p class="sidebar__kana">${esc(profile.nameKana)}</p>`
+      : null,
     '          <div class="sidebar__rule" aria-hidden="true"></div>',
     `          <p class="sidebar__role">${esc(profile.role)}</p>`,
     `          <p class="sidebar__location">${esc(profile.location)}</p>`,
@@ -126,17 +142,31 @@ const renderSidebar = () =>
     '      </aside>'
   );
 
-const renderAbout = () =>
-  lines(
+const renderAbout = () => {
+  const highlights = (about.highlights ?? []).map((h) =>
+    lines(
+      `            <div class="highlight" style="--cat-color: rgb(${cat(h.category).rgb});">`,
+      `              <h3 class="highlight__title">${esc(h.title)}</h3>`,
+      `              <p class="highlight__body">${esc(h.body)}</p>`,
+      '            </div>'
+    )
+  );
+
+  return lines(
     '        <section class="card section" id="about" aria-labelledby="about-title">',
     '          <p class="section__eyebrow">About</p>',
     '          <h2 class="section__title" id="about-title">自己紹介</h2>',
-    `          <p class="about__body">${esc(about)}</p>`,
+    `          <p class="about__body">${esc(about.summary)}</p>`,
+    highlights.length
+      ? lines('          <div class="highlights">', highlights.join('\n'), '          </div>')
+      : null,
     '        </section>'
   );
+};
 
-const renderSkill = (skill, group) =>
-  lines(
+const renderSkill = (skill, group) => {
+  const { num, unit } = formatYears(skill.years);
+  return lines(
     '              <div class="skill">',
     `                <span class="skill__name">${esc(skill.name)}</span>`,
     // バーの長さ=経験年数、色の濃さ=習熟度。数値は年数の欄で読めるので装飾扱い。
@@ -144,10 +174,11 @@ const renderSkill = (skill, group) =>
     `                  <div class="skill__bar" style="--bar-width: ${barWidth(skill.years)}; --bar-color: rgba(${group.rgb}, ${barAlpha(skill.level)});"></div>`,
     '                </div>',
     '                <span class="skill__years">',
-    `                  <span class="skill__years-num">${esc(skill.years)}</span><span class="skill__years-unit">年</span>`,
+    `                  <span class="skill__years-num">${esc(num)}</span><span class="skill__years-unit">${esc(unit)}</span>`,
     '                </span>',
     '              </div>'
   );
+};
 
 const renderSkills = () => {
   const groups = skillGroups.map((g) => {
@@ -183,8 +214,13 @@ const renderWorks = () => {
     const roleColor = categories[w.roleCategory]
       ? `rgb(${categories[w.roleCategory].rgb})`
       : w.roleCategory;
+    // 公開 URL がない制作物はリンクにせず、ただのカードとして出す。
+    const [open, close] = w.href
+      ? [`            <a class="work work--link" href="${esc(w.href)}">`, '            </a>']
+      : ['            <div class="work">', '            </div>'];
+
     return lines(
-      `            <a class="work" href="${esc(w.href)}">`,
+      open,
       '              <div class="work__thumb">',
       imgSlot({
         src: w.image,
@@ -204,7 +240,7 @@ const renderWorks = () => {
       w.tags.map((t) => `                  <span class="tag">${esc(t)}</span>`).join('\n'),
       '                </div>',
       '              </div>',
-      '            </a>'
+      close
     );
   });
 
@@ -220,15 +256,31 @@ const renderWorks = () => {
 };
 
 const renderCareer = () => {
-  const entries = career.map((c) =>
-    lines(
+  const entries = career.map((c) => {
+    const roleText = [c.role, c.team].filter(Boolean).join(' · ');
+    return lines(
       '            <div class="career__entry">',
-      `              <div class="career__period">${esc(c.period)}</div>`,
+      '              <div class="career__when">',
+      `                <div class="career__period">${esc(c.period)}</div>`,
+      c.duration
+        ? `                <div class="career__duration">${esc(c.duration)}</div>`
+        : null,
+      '              </div>',
       '              <div>',
-      `                <h3 class="career__title">${esc(c.title)}</h3>`,
+      '                <div class="career__head">',
+      `                  <h3 class="career__title">${esc(c.title)}</h3>`,
+      roleText ? `                  <span class="career__role">${esc(roleText)}</span>` : null,
+      '                </div>',
       `                <p class="career__desc">${esc(c.desc)}</p>`,
+      c.phases?.length
+        ? lines(
+            '                <p class="career__phases">',
+            `                  <span class="career__meta-label">担当工程</span>${esc(c.phases.join(' / '))}`,
+            '                </p>'
+          )
+        : null,
       '                <div class="career__techs">',
-      '                  <span class="career__techs-label">使用技術</span>',
+      '                  <span class="career__meta-label">使用技術</span>',
       c.techs
         .map(
           ([name, key]) =>
@@ -238,8 +290,8 @@ const renderCareer = () => {
       '                </div>',
       '              </div>',
       '            </div>'
-    )
-  );
+    );
+  });
 
   return lines(
     '        <section class="card section" id="career" aria-labelledby="career-title">',
@@ -247,6 +299,29 @@ const renderCareer = () => {
     '          <h2 class="section__title" id="career-title">職務経歴</h2>',
     '          <div class="career">',
     entries.join('\n'),
+    '          </div>',
+    '        </section>'
+  );
+};
+
+const renderCertifications = () => {
+  if (!flags.showCertifications || !certifications?.length) return null;
+
+  const rows = certifications.map((c) =>
+    lines(
+      '            <div class="cert">',
+      `              <div class="cert__date">${esc(c.date)}</div>`,
+      `              <div class="cert__name">${esc(c.name)}</div>`,
+      '            </div>'
+    )
+  );
+
+  return lines(
+    '        <section class="card section" id="certifications" aria-labelledby="certifications-title">',
+    '          <p class="section__eyebrow">Certifications</p>',
+    '          <h2 class="section__title" id="certifications-title">資格</h2>',
+    '          <div class="certs">',
+    rows.join('\n'),
     '          </div>',
     '        </section>'
   );
@@ -263,12 +338,22 @@ const renderJsonLd = () => {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: profile.name,
+    ...(profile.nameEn ? { alternateName: profile.nameEn } : {}),
     jobTitle: profile.role,
     description: profile.description,
     address: { '@type': 'PostalAddress', addressLocality: profile.location },
     knowsAbout: skillGroups.flatMap((g) => g.skills.map((s) => s.name)),
+    ...(flags.showCertifications && certifications?.length
+      ? {
+          hasCredential: certifications.map((c) => ({
+            '@type': 'EducationalOccupationalCredential',
+            name: c.name,
+            dateCreated: c.date.replace('.', '-'),
+          })),
+        }
+      : {}),
     ...(sameAs.length ? { sameAs } : {}),
-    ...(flags.showEmail ? { email: `mailto:${links.email}` } : {}),
+    ...(flags.showEmail && links.email ? { email: `mailto:${links.email}` } : {}),
   };
 
   // </script> がデータに混入しても壊れないようにエスケープする。
@@ -306,6 +391,7 @@ const html = lines(
   renderSkills(),
   renderWorks(),
   renderCareer(),
+  renderCertifications(),
   `        <p class="footer">${esc(footer)}</p>`,
   '      </main>',
   '  </div>',

@@ -155,6 +155,13 @@ a:hover { color: var(--mj-primary-dark); }
   line-height: 1.4;
 }
 
+.sidebar__kana {
+  font-size: 0.68rem;
+  color: var(--mj-light-gray);
+  margin: 0.15rem 0 0;
+  line-height: 1.4;
+}
+
 /* ロゴ4色のうち3色を使ったアクセントライン */
 .sidebar__rule {
   height: 3px;
@@ -261,6 +268,33 @@ a:hover { color: var(--mj-primary-dark); }
   margin: 0;
 }
 
+/* 自己PR */
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.highlight {
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--cat-color);
+}
+
+.highlight__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mj-dark-gray);
+  margin: 0 0 0.35rem;
+}
+
+.highlight__body {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--mj-gray);
+  margin: 0;
+}
+
 /* =========================================================================
    Skills — バーの長さ = 経験年数 / 色の濃さ = 習熟度
    ========================================================================= */
@@ -301,7 +335,8 @@ a:hover { color: var(--mj-primary-dark); }
 
 .skill {
   display: grid;
-  grid-template-columns: 9.5rem 1fr 4.2rem;
+  /* 名前の列は「AI駆動開発 (Claude Code)」が1行に収まる幅 */
+  grid-template-columns: 12rem 1fr 4.2rem;
   gap: 1rem;
   align-items: center;
 }
@@ -370,7 +405,7 @@ a:hover { color: var(--mj-primary-dark); }
   transition: box-shadow 300ms ease, border-color 300ms ease;
   color: inherit;
 }
-.work:hover {
+.work--link:hover {
   box-shadow: var(--mj-shadow-lg);
   border-color: var(--mj-border);
   color: inherit;
@@ -451,25 +486,62 @@ a:hover { color: var(--mj-primary-dark); }
   border-top: 1px solid var(--mj-border-soft);
 }
 
+.career__when { padding-top: 0.2rem; }
+
 .career__period {
   font-family: var(--mj-font-mono);
   font-size: 0.78rem;
   color: var(--mj-light-gray);
-  padding-top: 0.2rem;
+  line-height: 1.5;
+}
+
+.career__duration {
+  font-size: 0.68rem;
+  color: var(--mj-light-gray);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.career__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
 }
 
 .career__title {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--mj-dark-gray);
-  margin: 0 0 0.25rem;
+  margin: 0;
+}
+
+/* 役職・チーム人数。制作物の役割バッジと同じ形で、色は中立に */
+.career__role {
+  flex: none;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--mj-light-gray);
+  border: 1px solid currentColor;
+  border-radius: var(--mj-radius-full);
+  padding: 0.05rem 0.6rem;
+  line-height: 1.6;
 }
 
 .career__desc {
   font-size: 0.85rem;
   line-height: 1.9;
   color: var(--mj-gray);
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.5rem;
+}
+
+.career__phases {
+  font-size: 0.72rem;
+  line-height: 1.9;
+  color: var(--mj-gray);
+  margin: 0 0 0.5rem;
 }
 
 .career__techs {
@@ -479,10 +551,12 @@ a:hover { color: var(--mj-primary-dark); }
   align-items: center;
 }
 
-.career__techs-label {
+.career__meta-label {
   font-size: 0.65rem;
   color: var(--mj-light-gray);
 }
+/* 工程の見出しはインラインなので、チップ列(flex gap)と違い自前で余白をとる */
+.career__phases .career__meta-label { margin-right: 0.5rem; }
 
 .chip {
   display: inline-flex;
@@ -495,6 +569,30 @@ a:hover { color: var(--mj-primary-dark); }
   padding: 0.1rem 0.55rem;
   line-height: 1.6;
   white-space: nowrap;
+}
+
+/* =========================================================================
+   Certifications
+   ========================================================================= */
+.certs { display: flex; flex-direction: column; }
+
+.cert {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--mj-border-soft);
+}
+
+.cert__date {
+  font-family: var(--mj-font-mono);
+  font-size: 0.78rem;
+  color: var(--mj-light-gray);
+}
+
+.cert__name {
+  font-size: 0.85rem;
+  color: var(--mj-dark-gray);
 }
 
 /* =========================================================================
@@ -607,7 +705,18 @@ a:hover { color: var(--mj-primary-dark); }
     grid-template-columns: 1fr;
     gap: 0.4rem;
   }
-  .career__period { padding-top: 0; }
+  .career__when {
+    padding-top: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  /* 資格: 取得年月を上に */
+  .cert {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
