@@ -97,18 +97,32 @@ export const about = {
  * 職務経歴の使用技術チップで共通して使われます。
  * ------------------------------------------------------------------ */
 export const categories = {
-  be:    { title: 'バックエンド',     rgb: '20,73,142'  },
-  fe:    { title: 'フロントエンド',   rgb: '213,48,101' },
-  infra: { title: 'インフラ・その他', rgb: '47,165,156' },
-  ai:    { title: 'AI活用',           rgb: '106,43,184' },
-  other: { title: 'その他',           rgb: '108,114,120' },
+  be:    { title: 'バックエンド',             rgb: '20,73,142'  },
+  fe:    { title: 'フロントエンド',           rgb: '213,48,101' },
+  infra: { title: 'インフラ・ミドルウェア',   rgb: '47,165,156' },
+  ai:    { title: 'AI活用',                   rgb: '106,43,184' },
+  other: { title: 'その他',                   rgb: '108,114,120' },
 };
+
+/**
+ * バーが満タン（100%）になる経験年数。
+ *
+ *   null … 全スキル中の最長年数に合わせる（既定）
+ *   8    … デザイン仕様どおり「8年で100%、8年以上はクランプ」
+ *
+ * 既定を null にしているのは、実データの最長が10年（JavaScript）で、
+ * 8 に固定すると 8年 / 9年 / 10年 のバーがすべて満タンになり、
+ * 上位スキルの差が見えなくなるためです。
+ */
+export const skillBarMaxYears = null;
 
 /**
  * スキルセット。経験年数は職務経歴書の「主要なスキルサマリー」に準拠。
  *
+ * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク）で分けます。
+ * `label` を空文字にすると小見出しなしで並びます（インフラ・AI で使用）。
+ *
  *   years … 経験年数。バーの「長さ」になります(1年未満は「◯ヶ月」表示)。
- *           バーは全スキル中の最長年数を 100% とした相対表示です。
  *   level … 習熟度 1〜5。バーの「色の濃さ」になります。
  *
  * ※ level は職務経歴書に記載がないため、経験年数と直近の実務での使用状況から
@@ -117,35 +131,61 @@ export const categories = {
 export const skillGroups = [
   {
     category: 'be',
-    skills: [
-      { name: 'Ruby',             years: 9, level: 5 },
-      { name: 'Ruby on Rails',    years: 8, level: 5 },
-      { name: 'Java',             years: 5, level: 3 },
-      { name: 'Spring Framework', years: 2, level: 3 },
+    subs: [
+      {
+        label: '言語',
+        skills: [
+          { name: 'Ruby', years: 9, level: 5 },
+          { name: 'Java', years: 5, level: 3 },
+        ],
+      },
+      {
+        label: 'フレームワーク',
+        skills: [
+          { name: 'Ruby on Rails',    years: 8, level: 5 },
+          { name: 'Spring Framework', years: 2, level: 3 },
+        ],
+      },
     ],
   },
   {
     category: 'fe',
-    skills: [
-      { name: 'JavaScript',  years: 10,    level: 4 },
-      { name: 'React.js',    years: 5,     level: 4 },
-      { name: 'jQuery',      years: 2,     level: 3 },
-      { name: 'Vue.js',      years: 1,     level: 3 },
-      { name: 'React Native', years: 1 / 12, level: 1 },
+    subs: [
+      {
+        label: '言語',
+        skills: [{ name: 'JavaScript', years: 10, level: 4 }],
+      },
+      {
+        label: 'フレームワーク',
+        skills: [
+          { name: 'React.js',     years: 5,      level: 4 },
+          { name: 'jQuery',       years: 2,      level: 3 },
+          { name: 'Vue.js',       years: 1,      level: 3 },
+          { name: 'React Native', years: 1 / 12, level: 1 },
+        ],
+      },
     ],
   },
   {
     category: 'infra',
-    skills: [
-      { name: 'AWS',       years: 5,   level: 4 },
-      { name: 'BigQuery',  years: 1,   level: 2 },
-      { name: 'Terraform', years: 0.5, level: 3 },
+    subs: [
+      {
+        label: '',
+        skills: [
+          { name: 'AWS',       years: 5,   level: 4 },
+          { name: 'BigQuery',  years: 1,   level: 2 },
+          { name: 'Terraform', years: 0.5, level: 3 },
+        ],
+      },
     ],
   },
   {
     category: 'ai',
-    skills: [
-      { name: 'AI駆動開発 (Claude Code)', years: 1, level: 4 },
+    subs: [
+      {
+        label: '',
+        skills: [{ name: 'AI駆動開発', years: 1, level: 4 }],
+      },
     ],
   },
 ];

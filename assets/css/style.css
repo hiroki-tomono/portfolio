@@ -330,13 +330,29 @@ a:hover { color: var(--mj-primary-dark); }
 .skill-group__list {
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 言語 / フレームワークの小分類 */
+.skill-sub {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
+}
+
+.skill-sub__label {
+  font-family: var(--mj-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mj-light-gray);
+  /* バー列の開始位置（名前列 9.5rem + gap 1rem）に揃える */
+  margin: 0 0 0 10.5rem;
 }
 
 .skill {
   display: grid;
-  /* 名前の列は「AI駆動開発 (Claude Code)」が1行に収まる幅 */
-  grid-template-columns: 12rem 1fr 4.2rem;
+  grid-template-columns: 9.5rem 1fr 4.2rem;
   gap: 1rem;
   align-items: center;
 }
@@ -697,6 +713,8 @@ a:hover { color: var(--mj-primary-dark); }
     grid-column: 1 / -1;
     text-align: left;
   }
+  /* 名前が左端に来るので、小見出しのインデントも外す */
+  .skill-sub__label { margin-left: 0; }
 
   /* 制作物: サムネイルを上に */
   .work {

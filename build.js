@@ -18,6 +18,7 @@ import {
   links,
   about,
   categories,
+  skillBarMaxYears,
   skillGroups,
   works,
   career,
@@ -43,11 +44,13 @@ const esc = (value) =>
 /** カテゴリキーを解決する。未知のキーは other にフォールバック。 */
 const cat = (key) => categories[key] ?? categories.other;
 
-/** 全スキル中の最長年数。これを 100% としてバーの長さを決める。 */
-const MAX_YEARS = Math.max(...skillGroups.flatMap((g) => g.skills.map((s) => s.years)));
+/** バーが満タンになる年数。data の skillBarMaxYears が null なら最長年数に合わせる。 */
+const MAX_YEARS =
+  skillBarMaxYears ??
+  Math.max(...skillGroups.flatMap((g) => g.subs.flatMap((sub) => sub.skills.map((s) => s.years))));
 
 /**
- * バーの長さ。0年 = 20%、最長年数 = 100%。
+ * バーの長さ。0年 = 20%、MAX_YEARS 以上 = 100%。
  * 0年でも「そこにバーがある」ことが分かるよう 20% の下駄を履かせている。
  */
 const barWidth = (years) =>
@@ -170,18 +173,27 @@ const renderAbout = () => {
 const renderSkill = (skill, group) => {
   const { num, unit } = formatYears(skill.years);
   return lines(
-    '              <div class="skill">',
-    `                <span class="skill__name">${esc(skill.name)}</span>`,
+    '                  <div class="skill">',
+    `                    <span class="skill__name">${esc(skill.name)}</span>`,
     // バーの長さ=経験年数、色の濃さ=習熟度。数値は年数の欄で読めるので装飾扱い。
-    '                <div class="skill__track" aria-hidden="true">',
-    `                  <div class="skill__bar" style="--bar-width: ${barWidth(skill.years)}; --bar-color: rgba(${group.rgb}, ${barAlpha(skill.level)});"></div>`,
-    '                </div>',
-    '                <span class="skill__years">',
-    `                  <span class="skill__years-num">${esc(num)}</span><span class="skill__years-unit">${esc(unit)}</span>`,
-    '                </span>',
-    '              </div>'
+    '                    <div class="skill__track" aria-hidden="true">',
+    `                      <div class="skill__bar" style="--bar-width: ${barWidth(skill.years)}; --bar-color: rgba(${group.rgb}, ${barAlpha(skill.level)});"></div>`,
+    '                    </div>',
+    '                    <span class="skill__years">',
+    `                      <span class="skill__years-num">${esc(num)}</span><span class="skill__years-unit">${esc(unit)}</span>`,
+    '                    </span>',
+    '                  </div>'
   );
 };
+
+/** 言語 / フレームワークの小分類。label が空なら見出しなしで並べる。 */
+const renderSkillSub = (sub, category) =>
+  lines(
+    '                <div class="skill-sub">',
+    sub.label ? `                  <p class="skill-sub__label">${esc(sub.label)}</p>` : null,
+    sub.skills.map((s) => renderSkill(s, category)).join('\n'),
+    '                </div>'
+  );
 
 const renderSkills = () => {
   const groups = skillGroups.map((g) => {
@@ -193,7 +205,7 @@ const renderSkills = () => {
       `                <h3 class="skill-group__title">${esc(c.title)}</h3>`,
       '              </div>',
       '              <div class="skill-group__list">',
-      g.skills.map((s) => renderSkill(s, c)).join('\n'),
+      g.subs.map((sub) => renderSkillSub(sub, c)).join('\n'),
       '              </div>',
       '            </div>'
     );
@@ -352,7 +364,7 @@ const renderJsonLd = () => {
     jobTitle: profile.role,
     description: profile.description,
     address: { '@type': 'PostalAddress', addressLocality: profile.location },
-    knowsAbout: skillGroups.flatMap((g) => g.skills.map((s) => s.name)),
+    knowsAbout: skillGroups.flatMap((g) => g.subs.flatMap((sub) => sub.skills.map((s) => s.name))),
     ...(flags.showCertifications && certifications?.length
       ? {
           hasCredential: certifications.map((c) => ({
