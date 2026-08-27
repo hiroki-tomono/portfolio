@@ -37,9 +37,17 @@ export const profile = {
   nameEn: 'Hiroki Tomono',
   role: 'フルスタックエンジニア',
   location: '神奈川県',
-  /** 顔写真。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。 */
+  /**
+   * 顔写真。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
+   * 正方形に近い画像が理想です（132px の円形に切り抜かれます）。
+   */
   portrait: null,
   portraitAlt: '友野 弘樹のプロフィール写真',
+  /**
+   * 円形に切り抜くときの位置。横長の写真で顔が中央からずれている場合に調整します。
+   * 例: 'center 30%'（上寄りを表示）、'60% 25%'（右上を表示）。
+   */
+  portraitPosition: null,
   /** <meta name="description"> に使われます。 */
   description:
     'フルスタックエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして推進しています。',

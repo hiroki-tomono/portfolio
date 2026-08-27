@@ -70,10 +70,12 @@ const lines = (...parts) => parts.filter(Boolean).join('\n');
  * 画像スロット。src があれば <img>、なければ点線のプレースホルダー。
  * shape は 'circle' | 'rounded'、fit は 'cover'（既定）| 'contain'（ロゴ向け）。
  */
-const imgSlot = ({ src, alt, placeholder, shape, fit = 'cover', indent = '' }) => {
+const imgSlot = ({ src, alt, placeholder, shape, fit = 'cover', position, indent = '' }) => {
   const cls = `img-slot img-slot--${shape}${fit === 'contain' ? ' img-slot--contain' : ''}`;
   if (src) {
-    return `${indent}<div class="${cls}"><img src="${esc(src)}" alt="${esc(alt ?? '')}" loading="lazy" decoding="async"></div>`;
+    // position は切り抜き位置。横長写真を丸く抜くときに顔を中央へ寄せるのに使う。
+    const style = position ? ` style="object-position: ${esc(position)};"` : '';
+    return `${indent}<div class="${cls}"><img src="${esc(src)}" alt="${esc(alt ?? '')}"${style} loading="lazy" decoding="async"></div>`;
   }
   return lines(
     `${indent}<div class="${cls}" role="img" aria-label="${esc(placeholder)}">`,
@@ -124,6 +126,7 @@ const renderSidebar = () =>
       alt: profile.portraitAlt,
       placeholder: '顔写真',
       shape: 'circle',
+      position: profile.portraitPosition,
       indent: '          ',
     }),
     '        </div>',
