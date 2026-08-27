@@ -154,12 +154,15 @@ export const works = [
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
     href: 'https://lp.mogupick.com/merchant',
 
-    // ロゴ画像を assets/img/mogupick-logo.svg（または .png）として置き、
-    // 下の image のコメントを外してください。ファイルを置くまでは
-    // プレースホルダーが表示されます。
-    /** 画像。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。 */
-    image: null,
-    // image: 'assets/img/mogupick-logo.svg',
+    /**
+     * 画像。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
+     *
+     * ※ 現在のロゴはシンボルマークのみを再現した SVG です。公式のロゴデータが
+     *    手元にある場合は assets/img/mogupick-logo.svg を差し替えてください。
+     *    カードのタイトルに「Mogupick」が出るため、ロゴタイプ（文字部分）は
+     *    重複を避けて入れていません。
+     */
+    image: 'assets/img/mogupick-logo.svg',
     /** 'cover'（既定・スクリーンショット向け）か 'contain'（ロゴ向け・余白をとって全体を表示）。 */
     imageFit: 'contain',
     /** 画像が未設定のときのプレースホルダー文言。 */
