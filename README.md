@@ -26,10 +26,12 @@ assets/img/           ← 顔写真・スクリーンショットの置き場
 2. **習熟度を確認する** — `skillGroups` の `level`（1〜5）は職務経歴書に記載が
    ないため、経験年数と直近の使用状況から暫定で設定しています。実感に合わせて
    調整してください。
-3. **画像を入れる** — `profile.portrait` と `works[].image` に `assets/img/`
-   配下のパスを設定する。
-4. **Mogupick の URL** — `works[0].href` に公開 URL を入れるとカードがリンクに
-   なります（`null` のままならリンクなしのカードとして表示されます）。
+3. **Mogupick のロゴを置く** — ロゴ画像を `assets/img/mogupick-logo.svg`
+   （または `.png`）として保存し、`works[0]` の `image` のコメントを外します。
+   `imageFit: 'contain'` を指定してあるので、ロゴは切り取られず余白付きで
+   表示されます。ファイルを置くまではプレースホルダーのままです。
+   （リンク先の https://lp.mogupick.com/merchant は設定済みです）
+4. **顔写真を入れる** — `profile.portrait` に `assets/img/` 配下のパスを設定する。
 
 ## 編集のしかた
 

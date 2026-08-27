@@ -68,10 +68,10 @@ const lines = (...parts) => parts.filter(Boolean).join('\n');
 
 /**
  * 画像スロット。src があれば <img>、なければ点線のプレースホルダー。
- * shape は 'circle' | 'rounded'。
+ * shape は 'circle' | 'rounded'、fit は 'cover'（既定）| 'contain'（ロゴ向け）。
  */
-const imgSlot = ({ src, alt, placeholder, shape, indent = '' }) => {
-  const cls = `img-slot img-slot--${shape}`;
+const imgSlot = ({ src, alt, placeholder, shape, fit = 'cover', indent = '' }) => {
+  const cls = `img-slot img-slot--${shape}${fit === 'contain' ? ' img-slot--contain' : ''}`;
   if (src) {
     return `${indent}<div class="${cls}"><img src="${esc(src)}" alt="${esc(alt ?? '')}" loading="lazy" decoding="async"></div>`;
   }
@@ -215,18 +215,25 @@ const renderWorks = () => {
       ? `rgb(${categories[w.roleCategory].rgb})`
       : w.roleCategory;
     // 公開 URL がない制作物はリンクにせず、ただのカードとして出す。
+    const external = /^https?:\/\//.test(w.href ?? '');
     const [open, close] = w.href
-      ? [`            <a class="work work--link" href="${esc(w.href)}">`, '            </a>']
+      ? [
+          `            <a class="work work--link" href="${esc(w.href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>`,
+          '            </a>',
+        ]
       : ['            <div class="work">', '            </div>'];
+
+    const placeholder = w.placeholder ?? 'スクリーンショット';
 
     return lines(
       open,
       '              <div class="work__thumb">',
       imgSlot({
         src: w.image,
-        alt: `${w.title}のスクリーンショット`,
-        placeholder: 'スクリーンショット',
+        alt: `${w.title}の${placeholder}`,
+        placeholder,
         shape: 'rounded',
+        fit: w.imageFit,
         indent: '                ',
       }),
       '              </div>',

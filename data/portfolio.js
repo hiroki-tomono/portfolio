@@ -152,9 +152,18 @@ export const works = [
     desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しています。',
     tags: ['Rails API', 'Next.js', 'Stripe', 'AWS / Terraform'],
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
-    href: null,
-    /** スクリーンショット。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。 */
+    href: 'https://lp.mogupick.com/merchant',
+
+    // ロゴ画像を assets/img/mogupick-logo.svg（または .png）として置き、
+    // 下の image のコメントを外してください。ファイルを置くまでは
+    // プレースホルダーが表示されます。
+    /** 画像。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。 */
     image: null,
+    // image: 'assets/img/mogupick-logo.svg',
+    /** 'cover'（既定・スクリーンショット向け）か 'contain'（ロゴ向け・余白をとって全体を表示）。 */
+    imageFit: 'contain',
+    /** 画像が未設定のときのプレースホルダー文言。 */
+    placeholder: 'ロゴ',
   },
 ];
 

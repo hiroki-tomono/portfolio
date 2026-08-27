@@ -626,6 +626,14 @@ a:hover { color: var(--mj-primary-dark); }
   object-fit: cover;
 }
 
+/* ロゴ向け: 切り取らず全体を表示し、周りに余白と地色をとる */
+.img-slot--contain {
+  background: var(--mj-white);
+  border: 1px solid var(--mj-border-soft);
+  padding: 1rem;
+}
+.img-slot--contain img { object-fit: contain; }
+
 .img-slot__ring {
   position: absolute;
   inset: 0;
