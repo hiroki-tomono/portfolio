@@ -1,0 +1,639 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* =========================================================================
+   Design tokens — Majiyuru Design System (colors_and_type.css より抜粋)
+   ========================================================================= */
+:root {
+  /* ブランドカラー */
+  --mj-primary: #14498e;
+  --mj-primary-dark: #0e3468;
+  --mj-rose: #d53065;
+  --mj-rose-dark: #b82857;
+  --mj-accent: #f1af1a;
+  --mj-teal: #2fa59c;
+  --mj-ai-violet: #6a2bb8;
+
+  /* ニュートラル */
+  --mj-dark-gray: #373c3f;
+  --mj-gray: #5a6066;
+  --mj-light-gray: #8c9196;
+  --mj-bg: #f8f9fa;
+  --mj-white: #ffffff;
+  --mj-border: #e5e7eb;
+  --mj-border-soft: #f3f4f6;
+
+  /* フォント */
+  --mj-font-sans: "Noto Sans JP", system-ui, -apple-system, "Helvetica Neue",
+                  "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --mj-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+                  Consolas, monospace;
+
+  /* 角丸 */
+  --mj-radius-sm: 0.125rem;
+  --mj-radius-lg: 0.5rem;
+  --mj-radius-xl: 0.75rem;
+  --mj-radius-2xl: 1rem;
+  --mj-radius-full: 9999px;
+
+  /* 影 */
+  --mj-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --mj-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+
+  /* レイアウト */
+  --sidebar-width: 300px;
+  --page-max: 80rem;
+  --gutter: 1.5rem;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--mj-font-sans);
+  color: var(--mj-dark-gray);
+  background: var(--mj-bg);
+  line-height: 2;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { margin: 0; line-height: 1.3; color: var(--mj-dark-gray); }
+
+a {
+  color: var(--mj-primary);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+a:hover { color: var(--mj-primary-dark); }
+
+:focus-visible {
+  outline: 2px solid var(--mj-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.mono { font-family: var(--mj-font-mono); }
+
+/* スクリーンリーダー専用 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================================
+   Layout
+   ========================================================================= */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 3rem var(--gutter);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+/* 白いカード(サイドバー・各セクション共通) */
+.card {
+  background: var(--mj-white);
+  border-radius: var(--mj-radius-2xl);
+  box-shadow: var(--mj-shadow-sm);
+}
+
+/* =========================================================================
+   Sidebar
+   ========================================================================= */
+.sidebar {
+  position: sticky;
+  top: 3rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar__portrait {
+  width: 132px;
+  height: 132px;
+  margin: 0 auto;
+}
+
+.sidebar__identity { text-align: center; }
+
+.sidebar__eyebrow {
+  font-family: var(--mj-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mj-light-gray);
+  margin: 0 0 0.5rem;
+}
+
+.sidebar__name {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--mj-dark-gray);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ロゴ4色のうち3色を使ったアクセントライン */
+.sidebar__rule {
+  height: 3px;
+  width: 3.5rem;
+  margin: 0.75rem auto;
+  border-radius: var(--mj-radius-full);
+  background: linear-gradient(to right, var(--mj-rose), var(--mj-accent), var(--mj-teal));
+}
+
+.sidebar__role {
+  font-size: 0.85rem;
+  color: var(--mj-gray);
+  margin: 0;
+}
+
+.sidebar__location {
+  font-size: 0.72rem;
+  color: var(--mj-light-gray);
+  margin: 0.25rem 0 0;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--mj-border-soft);
+}
+
+.sidebar__nav a {
+  font-size: 0.85rem;
+  color: var(--mj-gray);
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid var(--mj-border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar__nav a:last-child { border-bottom: none; }
+.sidebar__nav a:hover { color: var(--mj-primary); }
+
+.sidebar__links {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--mj-radius-lg);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.pill--outline {
+  border: 1px solid rgba(20, 73, 142, 0.3);
+  color: var(--mj-primary);
+}
+.pill--outline:hover {
+  background: rgba(20, 73, 142, 0.05);
+  color: var(--mj-primary);
+}
+
+.pill--solid {
+  background: var(--mj-rose);
+  color: var(--mj-white);
+}
+.pill--solid:hover {
+  background: var(--mj-rose-dark);
+  color: var(--mj-white);
+}
+
+/* =========================================================================
+   Section shell
+   ========================================================================= */
+.section { padding: 3rem; }
+
+.section__eyebrow {
+  font-family: var(--mj-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mj-gray);
+  margin: 0 0 0.75rem;
+}
+
+.section__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mj-dark-gray);
+  margin: 0 0 1.5rem;
+}
+
+/* =========================================================================
+   About
+   ========================================================================= */
+.about__body {
+  font-size: 0.95rem;
+  line-height: 2.1;
+  letter-spacing: 0.04em;
+  color: var(--mj-gray);
+  margin: 0;
+}
+
+/* =========================================================================
+   Skills — バーの長さ = 経験年数 / 色の濃さ = 習熟度
+   ========================================================================= */
+.skills { display: flex; flex-direction: column; }
+
+.skill-group {
+  padding: 1.1rem 0 0.6rem;
+  border-top: 1px solid var(--mj-border-soft);
+}
+
+.skill-group__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.skill-group__dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--mj-radius-full);
+  background: var(--cat-color);
+}
+
+.skill-group__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mj-dark-gray);
+  margin: 0;
+}
+
+.skill-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr 4.2rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.skill__name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--mj-dark-gray);
+  text-align: right;
+}
+
+.skill__track {
+  position: relative;
+  height: 26px;
+  background: var(--mj-bg);
+  border-radius: var(--mj-radius-full);
+  overflow: hidden;
+}
+
+.skill__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--bar-width);
+  background: var(--bar-color);
+  border-radius: var(--mj-radius-full);
+}
+
+.skill__years {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.1rem;
+}
+
+.skill__years-num {
+  font-family: var(--mj-font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cat-color);
+  line-height: 1;
+}
+
+.skill__years-unit {
+  font-size: 0.7rem;
+  color: var(--mj-light-gray);
+}
+
+/* =========================================================================
+   Works
+   ========================================================================= */
+.works {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.work {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  border: 1px solid var(--mj-border-soft);
+  border-radius: var(--mj-radius-xl);
+  padding: 1.25rem;
+  transition: box-shadow 300ms ease, border-color 300ms ease;
+  color: inherit;
+}
+.work:hover {
+  box-shadow: var(--mj-shadow-lg);
+  border-color: var(--mj-border);
+  color: inherit;
+}
+
+.work__thumb {
+  width: 200px;
+  aspect-ratio: 16 / 10;
+}
+
+.work__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.work__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.work__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mj-dark-gray);
+  margin: 0;
+}
+
+.work__role {
+  flex: none;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--role-color);
+  border: 1px solid currentColor;
+  border-radius: var(--mj-radius-full);
+  padding: 0.05rem 0.6rem;
+  line-height: 1.6;
+}
+
+.work__desc {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--mj-gray);
+  margin: 0;
+}
+
+.work__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: var(--mj-font-mono);
+  font-size: 0.68rem;
+  color: var(--mj-gray);
+  background: var(--mj-bg);
+  border: 1px solid var(--mj-border);
+  border-radius: var(--mj-radius-sm);
+  padding: 0.15rem 0.5rem;
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   Career — 使用技術チップはスキルセットと同じカテゴリ色
+   ========================================================================= */
+.career { display: flex; flex-direction: column; }
+
+.career__entry {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--mj-border-soft);
+}
+
+.career__period {
+  font-family: var(--mj-font-mono);
+  font-size: 0.78rem;
+  color: var(--mj-light-gray);
+  padding-top: 0.2rem;
+}
+
+.career__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mj-dark-gray);
+  margin: 0 0 0.25rem;
+}
+
+.career__desc {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--mj-gray);
+  margin: 0 0 0.6rem;
+}
+
+.career__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.career__techs-label {
+  font-size: 0.65rem;
+  color: var(--mj-light-gray);
+}
+
+.chip {
+  display: inline-flex;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgb(var(--cat-rgb));
+  background: rgba(var(--cat-rgb), 0.08);
+  border: 1px solid rgba(var(--cat-rgb), 0.3);
+  border-radius: var(--mj-radius-full);
+  padding: 0.1rem 0.55rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.footer {
+  font-size: 0.72rem;
+  color: var(--mj-light-gray);
+  text-align: center;
+  margin: 0.5rem 0 1rem;
+}
+
+/* =========================================================================
+   Image slot — 写真が未設定のときのプレースホルダー
+   ========================================================================= */
+.img-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(127, 127, 127, 0.08);
+}
+
+.img-slot--circle { border-radius: 50%; }
+.img-slot--rounded { border-radius: 8px; }
+
+.img-slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-slot__ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1.5px dashed currentColor;
+  border-radius: inherit;
+  opacity: 0.35;
+}
+
+.img-slot__caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--mj-light-gray);
+  opacity: 0.75;
+}
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+@media (max-width: 60rem) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem var(--gutter);
+  }
+
+  .sidebar {
+    position: static;
+    top: auto;
+  }
+
+  /* サイドバーのナビは横並びに畳む */
+  .sidebar__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 1.25rem;
+    border-top: none;
+    border-bottom: 1px solid var(--mj-border-soft);
+    padding-bottom: 0.25rem;
+  }
+  .sidebar__nav a { border-bottom: none; }
+
+  .section { padding: 2rem 1.5rem; }
+
+  /* スキル: 名前を上、バーと年数を下に */
+  .skill {
+    grid-template-columns: 1fr 4.2rem;
+    gap: 0.35rem 1rem;
+  }
+  .skill__name {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  /* 制作物: サムネイルを上に */
+  .work {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .work__thumb {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* 職務経歴: 期間を上に */
+  .career__entry {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .career__period { padding-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* =========================================================================
+   Print — A4 1枚の職務経歴書として印刷できるように
+   ========================================================================= */
+@media print {
+  body { background: var(--mj-white); }
+  .page {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+  .card { box-shadow: none; }
+  .sidebar {
+    position: static;
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid var(--mj-border-soft);
+    margin-bottom: 1.5rem;
+  }
+  .sidebar__nav, .sidebar__links { display: none; }
+  .main { gap: 1.5rem; }
+  .section { padding: 0; page-break-inside: avoid; }
+  .work, .career__entry { page-break-inside: avoid; }
+}

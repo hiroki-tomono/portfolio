@@ -1,0 +1,12 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "エンジニアポートフォリオ（1ページ完結・静的サイト）",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node --run build && npx --yes serve ."
+  },
+  "license": "MIT"
+}
