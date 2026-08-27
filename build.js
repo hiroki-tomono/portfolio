@@ -21,6 +21,7 @@ import {
   skillBarMaxYears,
   skillGroups,
   works,
+  careerPhases,
   career,
   certifications,
   footer,
@@ -313,49 +314,78 @@ const renderWorks = () => {
   );
 };
 
-const renderCareer = () => {
-  const entries = career.map((c) => {
-    const roleText = [c.role, c.team].filter(Boolean).join(' · ');
-    return lines(
-      '            <div class="career__entry">',
-      '              <div class="career__when">',
-      `                <div class="career__period">${esc(periodLabel(c))}</div>`,
-      // 在籍中の案件は data-since を付けて、閲覧時にブラウザ側で再計算する。
-      `                <div class="career__duration"${c.end ? '' : ` data-since="${esc(c.start.replace('.', '-'))}"`}>${esc(formatMonths(durationMonths(c)))}</div>`,
-      '              </div>',
-      '              <div>',
-      '                <div class="career__head">',
-      `                  <h3 class="career__title">${esc(c.title)}</h3>`,
-      roleText ? `                  <span class="career__role">${esc(roleText)}</span>` : null,
-      '                </div>',
-      `                <p class="career__desc">${esc(c.desc)}</p>`,
-      c.phases?.length
-        ? lines(
-            '                <p class="career__phases">',
-            `                  <span class="career__meta-label">担当工程</span>${esc(c.phases.join(' / '))}`,
-            '                </p>'
-          )
-        : null,
-      '                <div class="career__techs">',
-      '                  <span class="career__meta-label">使用技術</span>',
-      c.techs
-        .map(
-          ([name, key]) =>
-            `                  <span class="chip" style="--cat-rgb: ${cat(key).rgb};">${esc(name)}</span>`
+/** フェーズの期間見出し。属するエントリの最初の開始年〜最後の終了年（在籍中は現在）。 */
+const phaseRange = (entries) => {
+  const from = entries.reduce((min, c) => (c.start < min ? c.start : min), entries[0].start);
+  if (entries.some((c) => !c.end)) return `${from.slice(0, 4)} – 現在`;
+  const to = entries.reduce((max, c) => (c.end > max ? c.end : max), entries[0].end);
+  return `${from.slice(0, 4)} – ${to.slice(0, 4)}`;
+};
+
+const renderCareerEntry = (c) => {
+  const roleText = [c.role, c.team].filter(Boolean).join(' · ');
+  return lines(
+    '                <div class="career__entry">',
+    '                  <div class="career__when">',
+    `                    <div class="career__period">${esc(periodLabel(c))}</div>`,
+    // 在籍中の案件は data-since を付けて、閲覧時にブラウザ側で再計算する。
+    `                    <div class="career__duration"${c.end ? '' : ` data-since="${esc(c.start.replace('.', '-'))}"`}>${esc(formatMonths(durationMonths(c)))}</div>`,
+    '                  </div>',
+    '                  <div>',
+    '                    <div class="career__head">',
+    `                      <h3 class="career__title">${esc(c.title)}</h3>`,
+    roleText ? `                      <span class="career__role">${esc(roleText)}</span>` : null,
+    '                    </div>',
+    `                    <p class="career__desc">${esc(c.desc)}</p>`,
+    c.phases?.length
+      ? lines(
+          '                    <p class="career__phases">',
+          `                      <span class="career__meta-label">担当工程</span>${esc(c.phases.join(' / '))}`,
+          '                    </p>'
         )
-        .join('\n'),
-      '                </div>',
-      '              </div>',
-      '            </div>'
+      : null,
+    '                    <div class="career__techs">',
+    '                      <span class="career__meta-label">使用技術</span>',
+    c.techs
+      .map(
+        ([name, key]) =>
+          `                      <span class="chip" style="--cat-rgb: ${cat(key).rgb};">${esc(name)}</span>`
+      )
+      .join('\n'),
+    '                    </div>',
+    '                  </div>',
+    '                </div>'
+  );
+};
+
+const renderCareer = () => {
+  // careerPhases の順に、その働き方に属するエントリをまとめる。
+  const blocks = careerPhases
+    .map((phase) => ({ phase, entries: career.filter((c) => c.phase === phase.key) }))
+    .filter(({ entries }) => entries.length)
+    .map(({ phase, entries }) =>
+      lines(
+        `            <div class="career-phase" style="--phase-rgb: ${phase.rgb};">`,
+        '              <div class="career-phase__head">',
+        `                <h3 class="career-phase__title">${esc(phase.title)}</h3>`,
+        phase.subtitle
+          ? `                <p class="career-phase__subtitle">${esc(phase.subtitle)}</p>`
+          : null,
+        `                <p class="career-phase__range">${esc(phaseRange(entries))}</p>`,
+        '              </div>',
+        '              <div class="career-phase__body">',
+        entries.map(renderCareerEntry).join('\n'),
+        '              </div>',
+        '            </div>'
+      )
     );
-  });
 
   return lines(
     '        <section class="card section" id="career" aria-labelledby="career-title">',
     '          <p class="section__eyebrow">Career</p>',
     '          <h2 class="section__title" id="career-title">職務経歴</h2>',
     '          <div class="career">',
-    entries.join('\n'),
+    blocks.join('\n'),
     '          </div>',
     '        </section>'
   );

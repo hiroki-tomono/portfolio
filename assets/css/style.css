@@ -492,15 +492,62 @@ a:hover { color: var(--mj-primary-dark); }
 /* =========================================================================
    Career — 使用技術チップはスキルセットと同じカテゴリ色
    ========================================================================= */
-.career { display: flex; flex-direction: column; }
+.career {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 働き方のフェーズ（自社プロダクト / フリーランス / SES・受託開発） */
+.career-phase {
+  border: 1px solid var(--mj-border-soft);
+  border-radius: var(--mj-radius-xl);
+  overflow: hidden;
+}
+
+.career-phase__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1.25rem;
+  background: rgba(var(--phase-rgb), 0.06);
+  border-left: 4px solid rgb(var(--phase-rgb));
+}
+
+.career-phase__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--phase-rgb));
+  margin: 0;
+}
+
+.career-phase__subtitle {
+  font-size: 0.72rem;
+  color: var(--mj-gray);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.career-phase__range {
+  margin: 0 0 0 auto;
+  font-family: var(--mj-font-mono);
+  font-size: 0.75rem;
+  color: rgb(var(--phase-rgb));
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.career-phase__body { background: var(--mj-white); }
 
 .career__entry {
   display: grid;
   grid-template-columns: 8rem 1fr;
   gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--mj-border-soft);
+  padding: 1.25rem;
 }
+/* 同じフェーズ内の2件目以降だけ罫線で区切る */
+.career__entry + .career__entry { border-top: 1px solid var(--mj-border-soft); }
 
 .career__when { padding-top: 0.2rem; }
 

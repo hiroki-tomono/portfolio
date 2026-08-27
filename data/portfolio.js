@@ -263,6 +263,18 @@ export const works = [
 ];
 
 /* ------------------------------------------------------------------ *
+ * 職務経歴のフェーズ(働き方の区分)
+ *
+ * 各 career エントリの `phase` がこのキーを指します。表示順もこの配列の順。
+ * 期間の見出しは、そのフェーズに属するエントリから自動で算出されます。
+ * ------------------------------------------------------------------ */
+export const careerPhases = [
+  { key: 'product',   title: '自社プロダクト',  subtitle: '事業として開発',           rgb: '47,165,156'  },
+  { key: 'freelance', title: 'フリーランス',    subtitle: '個人事業主として参画',     rgb: '213,48,101' },
+  { key: 'ses',       title: 'SES・受託開発',   subtitle: '客先常駐・受託として参画', rgb: '20,73,142'  },
+];
+
+/* ------------------------------------------------------------------ *
  * 職務経歴(新しい順)
  *
  * techs の各要素は [表示名, categories のキー]。
@@ -270,6 +282,7 @@ export const works = [
  * ------------------------------------------------------------------ */
 export const career = [
   {
+    phase: 'product',
     start: '2025.06', end: null, durationMonths: null,
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
@@ -296,6 +309,7 @@ export const career = [
     ],
   },
   {
+    phase: 'freelance',
     start: '2021.09', end: null, durationMonths: null,
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
@@ -317,6 +331,7 @@ export const career = [
     ],
   },
   {
+    phase: 'freelance',
     start: '2023.01', end: '2023.12', durationMonths: 11,
     title: '副業マッチングプラットフォームの新規リプレース、および既存システムの改修',
     role: '開発メンバー',
@@ -335,6 +350,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2021.04', end: '2021.09', durationMonths: 6,
     title: 'アプリマーケティングプラットフォームのコア機能改修',
     role: '開発メンバー',
@@ -354,6 +370,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2021.01', end: '2021.03', durationMonths: 3,
     title: 'ビジネスシーンにおける顧客との新たな非対面コミュニケーションツールの新規開発',
     role: 'サブリーダー',
@@ -375,6 +392,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2018.10', end: '2020.12', durationMonths: 26,
     title: 'イベント用品のレンタル・販売サービスの業務システムのリプレース',
     role: '開発メンバー',
@@ -394,6 +412,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2018.07', end: '2018.09', durationMonths: 2,
     title: 'TV番組広告登録ツールの刷新',
     role: 'リーダー',
@@ -411,6 +430,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2018.05', end: '2018.06', durationMonths: 2,
     title: '不動産情報のコンテンツフィルタリングシステム(API)の開発',
     role: '開発メンバー',
@@ -427,6 +447,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2018.04', end: '2018.04', durationMonths: 1,
     title: 'イベントの入退場管理アプリケーションのモバイル版の開発',
     role: '開発メンバー',
@@ -440,6 +461,7 @@ export const career = [
     ],
   },
   {
+    phase: 'ses',
     start: '2015.07', end: '2018.03', durationMonths: 33,
     title: '大手金融システムの開発保守',
     role: '開発＆保守メンバー',
