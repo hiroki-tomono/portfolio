@@ -37,6 +37,8 @@ export const profile = {
   nameEn: 'Hiroki Tomono',
   role: 'フルスタックエンジニア',
   location: '神奈川県',
+  /** ブラウザのタブと OGP に出るページタイトル。 */
+  pageTitle: '友野弘樹 | ポートフォリオ',
   /**
    * 顔写真。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
    * 正方形に近い画像が理想です（132px の円形に切り抜かれます）。

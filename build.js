@@ -375,15 +375,17 @@ const renderJsonLd = () => {
  * ページ全体
  * ------------------------------------------------------------------ */
 
+const pageTitle = profile.pageTitle || `${profile.name} | ${profile.role}`;
+
 const html = lines(
   '<!DOCTYPE html>',
   '<html lang="ja">',
   '<head>',
   '  <meta charset="utf-8">',
   '  <meta name="viewport" content="width=device-width, initial-scale=1">',
-  `  <title>${esc(profile.name)} | ${esc(profile.role)}</title>`,
+  `  <title>${esc(pageTitle)}</title>`,
   `  <meta name="description" content="${esc(profile.description)}">`,
-  `  <meta property="og:title" content="${esc(profile.name)} | ${esc(profile.role)}">`,
+  `  <meta property="og:title" content="${esc(pageTitle)}">`,
   `  <meta property="og:description" content="${esc(profile.description)}">`,
   '  <meta property="og:type" content="profile">',
   '  <link rel="preconnect" href="https://fonts.googleapis.com">',
