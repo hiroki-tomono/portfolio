@@ -60,6 +60,42 @@ const barWidth = (years) =>
 const LEVEL_ALPHA = [0.12, 0.25, 0.45, 0.7, 1];
 const barAlpha = (level) => LEVEL_ALPHA[Math.min(Math.max(level, 1), 5) - 1];
 
+/* ---- 職務経歴の期間 ---------------------------------------------- */
+
+/** 'YYYY.MM' を通し月数に。 */
+const toMonths = (s) => {
+  const [y, m] = s.split('.').map(Number);
+  return y * 12 + (m ?? 1);
+};
+
+/** ビルド時点の通し月数。 */
+const NOW_MONTHS = (() => {
+  const d = new Date();
+  return d.getFullYear() * 12 + d.getMonth() + 1;
+})();
+
+/** 月数を「◯年◯ヶ月」に。 */
+const formatMonths = (m) => {
+  const y = Math.floor(m / 12);
+  const rest = m % 12;
+  if (y && rest) return `${y}年${rest}ヶ月`;
+  if (y) return `${y}年`;
+  return `${rest}ヶ月`;
+};
+
+/** 「2021.09 – 現在」のような表示。開始と終了が同じ月なら開始だけ。 */
+const periodLabel = (c) => {
+  if (!c.end) return `${c.start} – 現在`;
+  return c.start === c.end ? c.start : `${c.start} – ${c.end}`;
+};
+
+/**
+ * 参画期間。durationMonths が入っていればその値（職務経歴書の記載）を使い、
+ * 在籍中（end: null）は開始月から現在までを計算する。
+ */
+const durationMonths = (c) =>
+  c.durationMonths ?? (c.end ? toMonths(c.end) - toMonths(c.start) : NOW_MONTHS - toMonths(c.start));
+
 /** 経験年数の表示。1年未満は「◯ヶ月」に切り替える。 */
 const formatYears = (years) => {
   if (years >= 1) return { num: Math.round(years * 10) / 10, unit: '年' };
@@ -283,10 +319,9 @@ const renderCareer = () => {
     return lines(
       '            <div class="career__entry">',
       '              <div class="career__when">',
-      `                <div class="career__period">${esc(c.period)}</div>`,
-      c.duration
-        ? `                <div class="career__duration">${esc(c.duration)}</div>`
-        : null,
+      `                <div class="career__period">${esc(periodLabel(c))}</div>`,
+      // 在籍中の案件は data-since を付けて、閲覧時にブラウザ側で再計算する。
+      `                <div class="career__duration"${c.end ? '' : ` data-since="${esc(c.start.replace('.', '-'))}"`}>${esc(formatMonths(durationMonths(c)))}</div>`,
       '              </div>',
       '              <div>',
       '                <div class="career__head">',
@@ -419,6 +454,22 @@ const html = lines(
   `        <p class="footer">${esc(footer)}</p>`,
   '      </main>',
   '  </div>',
+  // 在籍中の案件の参画期間を、閲覧時点で計算し直す。
+  // ビルド時の値がすでに入っているので、JS が無効でも表示は崩れない。
+  '  <script>',
+  '    (function () {',
+  '      var d = new Date();',
+  '      var now = d.getFullYear() * 12 + d.getMonth() + 1;',
+  '      document.querySelectorAll("[data-since]").forEach(function (el) {',
+  '        var p = el.getAttribute("data-since").split("-");',
+  '        var m = now - (Number(p[0]) * 12 + Number(p[1]));',
+  '        if (!(m > 0)) return;',
+  '        var y = Math.floor(m / 12);',
+  '        var rest = m % 12;',
+  '        el.textContent = y && rest ? y + "年" + rest + "ヶ月" : y ? y + "年" : rest + "ヶ月";',
+  '      });',
+  '    })();',
+  '  </script>',
   '</body>',
   '</html>',
   ''

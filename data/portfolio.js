@@ -270,8 +270,7 @@ export const works = [
  * ------------------------------------------------------------------ */
 export const career = [
   {
-    period: '2025.06 – 現在',
-    duration: null,
+    start: '2025.06', end: null, durationMonths: null,
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
@@ -297,8 +296,7 @@ export const career = [
     ],
   },
   {
-    period: '2021.09 – 現在',
-    duration: null,
+    start: '2021.09', end: null, durationMonths: null,
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
     team: '5〜12名',
@@ -319,8 +317,7 @@ export const career = [
     ],
   },
   {
-    period: '2023.01 – 2023.12',
-    duration: '11ヶ月',
+    start: '2023.01', end: '2023.12', durationMonths: 11,
     title: '副業マッチングプラットフォームの新規リプレース、および既存システムの改修',
     role: '開発メンバー',
     team: '5名',
@@ -338,8 +335,7 @@ export const career = [
     ],
   },
   {
-    period: '2021.04 – 2021.09',
-    duration: '6ヶ月',
+    start: '2021.04', end: '2021.09', durationMonths: 6,
     title: 'アプリマーケティングプラットフォームのコア機能改修',
     role: '開発メンバー',
     team: '4名',
@@ -358,8 +354,7 @@ export const career = [
     ],
   },
   {
-    period: '2021.01 – 2021.03',
-    duration: '3ヶ月',
+    start: '2021.01', end: '2021.03', durationMonths: 3,
     title: 'ビジネスシーンにおける顧客との新たな非対面コミュニケーションツールの新規開発',
     role: 'サブリーダー',
     team: '3〜4名',
@@ -380,8 +375,7 @@ export const career = [
     ],
   },
   {
-    period: '2018.10 – 2020.12',
-    duration: '26ヶ月',
+    start: '2018.10', end: '2020.12', durationMonths: 26,
     title: 'イベント用品のレンタル・販売サービスの業務システムのリプレース',
     role: '開発メンバー',
     team: '3〜5名',
@@ -400,8 +394,7 @@ export const career = [
     ],
   },
   {
-    period: '2018.07 – 2018.09',
-    duration: '2ヶ月',
+    start: '2018.07', end: '2018.09', durationMonths: 2,
     title: 'TV番組広告登録ツールの刷新',
     role: 'リーダー',
     team: '3名',
@@ -418,8 +411,7 @@ export const career = [
     ],
   },
   {
-    period: '2018.05 – 2018.06',
-    duration: '2ヶ月',
+    start: '2018.05', end: '2018.06', durationMonths: 2,
     title: '不動産情報のコンテンツフィルタリングシステム(API)の開発',
     role: '開発メンバー',
     team: '3名',
@@ -435,8 +427,7 @@ export const career = [
     ],
   },
   {
-    period: '2018.04',
-    duration: '1ヶ月',
+    start: '2018.04', end: '2018.04', durationMonths: 1,
     title: 'イベントの入退場管理アプリケーションのモバイル版の開発',
     role: '開発メンバー',
     team: '2名',
@@ -449,8 +440,7 @@ export const career = [
     ],
   },
   {
-    period: '2015.07 – 2018.03',
-    duration: '33ヶ月',
+    start: '2015.07', end: '2018.03', durationMonths: 33,
     title: '大手金融システムの開発保守',
     role: '開発＆保守メンバー',
     team: '4〜14名',

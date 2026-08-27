@@ -574,6 +574,7 @@
             <div class="career__entry">
               <div class="career__when">
                 <div class="career__period">2025.06 – 現在</div>
+                <div class="career__duration" data-since="2025-06">1年2ヶ月</div>
               </div>
               <div>
                 <div class="career__head">
@@ -608,6 +609,7 @@
             <div class="career__entry">
               <div class="career__when">
                 <div class="career__period">2021.09 – 現在</div>
+                <div class="career__duration" data-since="2021-09">4年11ヶ月</div>
               </div>
               <div>
                 <div class="career__head">
@@ -722,7 +724,7 @@
             <div class="career__entry">
               <div class="career__when">
                 <div class="career__period">2018.10 – 2020.12</div>
-                <div class="career__duration">26ヶ月</div>
+                <div class="career__duration">2年2ヶ月</div>
               </div>
               <div>
                 <div class="career__head">
@@ -823,7 +825,7 @@
             <div class="career__entry">
               <div class="career__when">
                 <div class="career__period">2015.07 – 2018.03</div>
-                <div class="career__duration">33ヶ月</div>
+                <div class="career__duration">2年9ヶ月</div>
               </div>
               <div>
                 <div class="career__head">
@@ -892,5 +894,19 @@
         <p class="footer">© 2026 Hiroki Tomono</p>
       </main>
   </div>
+  <script>
+    (function () {
+      var d = new Date();
+      var now = d.getFullYear() * 12 + d.getMonth() + 1;
+      document.querySelectorAll("[data-since]").forEach(function (el) {
+        var p = el.getAttribute("data-since").split("-");
+        var m = now - (Number(p[0]) * 12 + Number(p[1]));
+        if (!(m > 0)) return;
+        var y = Math.floor(m / 12);
+        var rest = m % 12;
+        el.textContent = y && rest ? y + "年" + rest + "ヶ月" : y ? y + "年" : rest + "ヶ月";
+      });
+    })();
+  </script>
 </body>
 </html>
