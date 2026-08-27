@@ -114,13 +114,18 @@ export const categories = {
 export const skillBarMaxYears = 8;
 
 /**
- * スキルセット。経験年数は職務経歴書の「主要なスキルサマリー」に準拠。
+ * スキルセット。職務経歴に登場する技術をすべて掲載しています。
  *
- * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク）で分けます。
- * `label` を空文字にすると小見出しなしで並びます（インフラ・AI で使用）。
+ * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク など）で
+ * 分けます。`label` を空文字にすると小見出しなしで並びます。
  *
  *   years … 経験年数。バーの「長さ」になります(1年未満は「◯ヶ月」表示)。
  *   level … 習熟度 1〜5。バーの「色の濃さ」になります。
+ *
+ * 年数の根拠:
+ *   - 職務経歴書の「主要なスキルサマリー」に記載があるものはその値
+ *     （Ruby 9年 / JavaScript 10年 など、入社前の経験も含む自己申告値）
+ *   - 記載がないものは職務経歴の参画期間を積算した値（重複期間は二重に数えない）
  *
  * ※ level は職務経歴書に記載がないため、経験年数と直近の実務での使用状況から
  *    暫定で設定しています。実感に合わせて調整してください。
@@ -143,6 +148,15 @@ export const skillGroups = [
           { name: 'Spring Framework', years: 2, level: 3 },
         ],
       },
+      {
+        label: 'ライブラリ・サービス',
+        skills: [
+          { name: 'RSpec',       years: 6, level: 4 },
+          { name: 'JUnit',       years: 2, level: 2 },
+          { name: 'Solid Queue', years: 1, level: 3 },
+          { name: 'Stripe',      years: 1, level: 3 },
+        ],
+      },
     ],
   },
   {
@@ -150,12 +164,16 @@ export const skillGroups = [
     subs: [
       {
         label: '言語',
-        skills: [{ name: 'JavaScript', years: 10, level: 4 }],
+        skills: [
+          { name: 'JavaScript', years: 10,    level: 4 },
+          { name: 'TypeScript', years: 0.25,  level: 2 },
+        ],
       },
       {
         label: 'フレームワーク',
         skills: [
           { name: 'React.js',     years: 5,      level: 4 },
+          { name: 'Next.js',      years: 5,      level: 4 },
           { name: 'jQuery',       years: 2,      level: 3 },
           { name: 'Vue.js',       years: 1,      level: 3 },
           { name: 'React Native', years: 1 / 12, level: 1 },
@@ -167,11 +185,38 @@ export const skillGroups = [
     category: 'infra',
     subs: [
       {
-        label: '',
+        label: 'データベース',
         skills: [
-          { name: 'AWS',       years: 5,   level: 4 },
-          { name: 'BigQuery',  years: 1,   level: 2 },
-          { name: 'Terraform', years: 0.5, level: 3 },
+          { name: 'MySQL',      years: 8, level: 4 },
+          { name: 'PostgreSQL', years: 4, level: 4 },
+          { name: 'Oracle',     years: 3, level: 3 },
+          { name: 'BigQuery',   years: 1, level: 2 },
+        ],
+      },
+      {
+        label: 'クラウド・インフラ',
+        skills: [
+          { name: 'AWS',        years: 5,    level: 4 },
+          { name: 'Vercel',     years: 1,    level: 3 },
+          { name: 'Terraform',  years: 0.5,  level: 3 },
+          { name: 'Amazon EC2', years: 0.25, level: 3 },
+          { name: 'Amazon S3',  years: 0.25, level: 3 },
+        ],
+      },
+      {
+        label: '開発環境・ツール',
+        skills: [
+          { name: 'Git',            years: 8, level: 5 },
+          { name: 'Docker',         years: 6, level: 4 },
+          { name: 'Ubuntu',         years: 3, level: 3 },
+          { name: 'Windows',        years: 3, level: 3 },
+          { name: 'Eclipse',        years: 3, level: 3 },
+          { name: 'SVN',            years: 3, level: 3 },
+          { name: 'JP1',            years: 3, level: 2 },
+          { name: 'VBA',            years: 2, level: 3 },
+          { name: 'GitHub Actions', years: 1, level: 4 },
+          { name: 'ChatOps',        years: 1, level: 3 },
+          { name: 'Resend',         years: 1, level: 3 },
         ],
       },
     ],
