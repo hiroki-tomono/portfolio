@@ -52,7 +52,7 @@ export const profile = {
   portraitPosition: null,
   /** <meta name="description"> に使われます。 */
   description:
-    'フルスタックエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして推進しています。',
+    'フルスタックエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして立ち上げました。',
 };
 
 export const links = {
@@ -68,14 +68,14 @@ export const links = {
 export const about = {
   /** 概要(リード文) */
   summary:
-    'エンジニア歴10年超のフルスタックエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。現在は自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)の企画・開発を代表兼リードエンジニアとして推進しながら、受託開発にも対応しています。',
+    'エンジニア歴10年超のフルスタックエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から運用までを一貫して担当しました。現在はフリーランスとして受託開発・開発保守に対応しています。',
 
   /** 自己PR。見出しの色は categories のキーで指定します。 */
   highlights: [
     {
       category: 'be',
       title: 'バックエンドからインフラまで一気通貫の対応力',
-      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担っており、少人数チームでの即戦力として貢献できます。',
+      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担いました。少人数チームでの即戦力として貢献できます。',
     },
     {
       category: 'ai',
@@ -241,7 +241,7 @@ export const works = [
     role: '代表 兼 リードエンジニア',
     /** 役職バッジの色。categories のキー、または任意の CSS 色。 */
     roleCategory: 'be',
-    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しています。',
+    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。',
     tags: ['Rails API', 'Next.js', 'Stripe', 'AWS / Terraform'],
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
     href: 'https://lp.mogupick.com/merchant',
@@ -283,11 +283,11 @@ export const careerPhases = [
 export const career = [
   {
     phase: 'product',
-    start: '2025.06', end: null, durationMonths: null,
+    start: '2025.06', end: '2026.08', durationMonths: null,
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
-    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しています。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しています。',
+    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しました。',
     phases: ['企画', '要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
