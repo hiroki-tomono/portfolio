@@ -41,7 +41,7 @@ export const profile = {
    * 顔写真。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
    * 正方形に近い画像が理想です（132px の円形に切り抜かれます）。
    */
-  portrait: null,
+  portrait: 'assets/img/myself.png',
   portraitAlt: '友野 弘樹のプロフィール写真',
   /**
    * 円形に切り抜くときの位置。横長の写真で顔が中央からずれている場合に調整します。
