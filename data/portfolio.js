@@ -37,6 +37,8 @@ export const profile = {
   nameEn: 'Hiroki Tomono',
   role: 'Webエンジニア',
   location: '神奈川県',
+  /** ブラウザのタブと OGP に出るページタイトル。 */
+  pageTitle: '友野弘樹 | ポートフォリオ',
   /**
    * 顔写真。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
    * 正方形に近い画像が理想です（132px の円形に切り抜かれます）。
@@ -50,7 +52,7 @@ export const profile = {
   portraitPosition: null,
   /** <meta name="description"> に使われます。 */
   description:
-    'Webエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして推進しています。',
+    'Webエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして立ち上げました。',
 };
 
 export const links = {
@@ -66,14 +68,14 @@ export const links = {
 export const about = {
   /** 概要(リード文) */
   summary:
-    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。現在は自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)の企画・開発を代表兼リードエンジニアとして推進しながら、受託開発にも対応しています。',
+    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から運用までを一貫して担当しました。現在はフリーランスとして受託開発・開発保守に対応しています。',
 
   /** 自己PR。見出しの色は categories のキーで指定します。 */
   highlights: [
     {
       category: 'be',
       title: 'バックエンドからインフラまで一気通貫の対応力',
-      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担っており、少人数チームでの即戦力として貢献できます。',
+      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担いました。少人数チームでの即戦力として貢献できます。',
     },
     {
       category: 'ai',
@@ -95,19 +97,35 @@ export const about = {
  * 職務経歴の使用技術チップで共通して使われます。
  * ------------------------------------------------------------------ */
 export const categories = {
-  be:    { title: 'バックエンド',     rgb: '20,73,142'  },
-  fe:    { title: 'フロントエンド',   rgb: '213,48,101' },
-  infra: { title: 'インフラ・その他', rgb: '47,165,156' },
-  ai:    { title: 'AI活用',           rgb: '106,43,184' },
-  other: { title: 'その他',           rgb: '108,114,120' },
+  be:    { title: 'バックエンド',             rgb: '20,73,142'  },
+  fe:    { title: 'フロントエンド',           rgb: '213,48,101' },
+  infra: { title: 'インフラ・ミドルウェア',   rgb: '47,165,156' },
+  ai:    { title: 'AI活用',                   rgb: '106,43,184' },
+  other: { title: 'その他',                   rgb: '108,114,120' },
 };
 
 /**
- * スキルセット。経験年数は職務経歴書の「主要なスキルサマリー」に準拠。
+ * バーが満タン（100%）になる経験年数。デザイン仕様どおり8年。
+ * 8年以上はすべて満タン（クランプ）になります。
+ *
+ * null にすると、全スキル中の最長年数を 100% とした相対表示に切り替わり、
+ * 8年 / 9年 / 10年 の差が見えるようになります。
+ */
+export const skillBarMaxYears = 8;
+
+/**
+ * スキルセット。職務経歴に登場する技術をすべて掲載しています。
+ *
+ * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク など）で
+ * 分けます。`label` を空文字にすると小見出しなしで並びます。
  *
  *   years … 経験年数。バーの「長さ」になります(1年未満は「◯ヶ月」表示)。
- *           バーは全スキル中の最長年数を 100% とした相対表示です。
  *   level … 習熟度 1〜5。バーの「色の濃さ」になります。
+ *
+ * 年数の根拠:
+ *   - 職務経歴書の「主要なスキルサマリー」に記載があるものはその値
+ *     （Ruby 9年 / JavaScript 10年 など、入社前の経験も含む自己申告値）
+ *   - 記載がないものは職務経歴の参画期間を積算した値（重複期間は二重に数えない）
  *
  * ※ level は職務経歴書に記載がないため、経験年数と直近の実務での使用状況から
  *    暫定で設定しています。実感に合わせて調整してください。
@@ -115,35 +133,101 @@ export const categories = {
 export const skillGroups = [
   {
     category: 'be',
-    skills: [
-      { name: 'Ruby',             years: 9, level: 5 },
-      { name: 'Ruby on Rails',    years: 8, level: 5 },
-      { name: 'Java',             years: 5, level: 3 },
-      { name: 'Spring Framework', years: 2, level: 3 },
+    subs: [
+      {
+        label: '言語',
+        skills: [
+          { name: 'Ruby', years: 9, level: 5 },
+          { name: 'Java', years: 5, level: 3 },
+        ],
+      },
+      {
+        label: 'フレームワーク',
+        skills: [
+          { name: 'Ruby on Rails',    years: 8, level: 5 },
+          { name: 'Spring Framework', years: 2, level: 3 },
+        ],
+      },
+      {
+        label: 'ライブラリ・サービス',
+        skills: [
+          { name: 'RSpec',       years: 6, level: 4 },
+          { name: 'JUnit',       years: 2, level: 2 },
+          { name: 'Solid Queue', years: 1, level: 3 },
+          { name: 'Stripe',      years: 1, level: 3 },
+        ],
+      },
     ],
   },
   {
     category: 'fe',
-    skills: [
-      { name: 'JavaScript',  years: 10,    level: 4 },
-      { name: 'React.js',    years: 5,     level: 4 },
-      { name: 'jQuery',      years: 2,     level: 3 },
-      { name: 'Vue.js',      years: 1,     level: 3 },
-      { name: 'React Native', years: 1 / 12, level: 1 },
+    subs: [
+      {
+        label: '言語',
+        skills: [
+          { name: 'JavaScript', years: 10,    level: 4 },
+          { name: 'TypeScript', years: 0.25,  level: 2 },
+        ],
+      },
+      {
+        label: 'フレームワーク',
+        skills: [
+          { name: 'React.js',     years: 5,      level: 4 },
+          { name: 'Next.js',      years: 5,      level: 4 },
+          { name: 'jQuery',       years: 2,      level: 3 },
+          { name: 'Vue.js',       years: 1,      level: 3 },
+          { name: 'React Native', years: 1 / 12, level: 1 },
+        ],
+      },
     ],
   },
   {
     category: 'infra',
-    skills: [
-      { name: 'AWS',       years: 5,   level: 4 },
-      { name: 'BigQuery',  years: 1,   level: 2 },
-      { name: 'Terraform', years: 0.5, level: 3 },
+    subs: [
+      {
+        label: 'データベース',
+        skills: [
+          { name: 'MySQL',      years: 8, level: 4 },
+          { name: 'PostgreSQL', years: 4, level: 4 },
+          { name: 'Oracle',     years: 3, level: 3 },
+          { name: 'BigQuery',   years: 1, level: 2 },
+        ],
+      },
+      {
+        label: 'クラウド・インフラ',
+        skills: [
+          { name: 'AWS',        years: 5,    level: 4 },
+          { name: 'Vercel',     years: 1,    level: 3 },
+          { name: 'Terraform',  years: 0.5,  level: 3 },
+          { name: 'Amazon EC2', years: 0.25, level: 3 },
+          { name: 'Amazon S3',  years: 0.25, level: 3 },
+        ],
+      },
+      {
+        label: '開発環境・ツール',
+        skills: [
+          { name: 'Git',            years: 8, level: 5 },
+          { name: 'Docker',         years: 6, level: 4 },
+          { name: 'Ubuntu',         years: 3, level: 3 },
+          { name: 'Windows',        years: 3, level: 3 },
+          { name: 'Eclipse',        years: 3, level: 3 },
+          { name: 'SVN',            years: 3, level: 3 },
+          { name: 'JP1',            years: 3, level: 2 },
+          { name: 'VBA',            years: 2, level: 3 },
+          { name: 'GitHub Actions', years: 1, level: 4 },
+          { name: 'ChatOps',        years: 1, level: 3 },
+          { name: 'Resend',         years: 1, level: 3 },
+        ],
+      },
     ],
   },
   {
     category: 'ai',
-    skills: [
-      { name: 'AI駆動開発 (Claude Code)', years: 1, level: 4 },
+    subs: [
+      {
+        label: '',
+        skills: [{ name: 'AI駆動開発', years: 1, level: 4 }],
+      },
     ],
   },
 ];
@@ -157,7 +241,7 @@ export const works = [
     role: '代表 兼 リードエンジニア',
     /** 役職バッジの色。categories のキー、または任意の CSS 色。 */
     roleCategory: 'be',
-    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しています。',
+    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。',
     tags: ['Rails API', 'Next.js', 'Stripe', 'AWS / Terraform'],
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
     href: 'https://lp.mogupick.com/merchant',
@@ -179,6 +263,18 @@ export const works = [
 ];
 
 /* ------------------------------------------------------------------ *
+ * 職務経歴のフェーズ(働き方の区分)
+ *
+ * 各 career エントリの `phase` がこのキーを指します。表示順もこの配列の順。
+ * 期間の見出しは、そのフェーズに属するエントリから自動で算出されます。
+ * ------------------------------------------------------------------ */
+export const careerPhases = [
+  { key: 'product',   title: '自社プロダクト',  subtitle: '事業として開発',           rgb: '47,165,156'  },
+  { key: 'freelance', title: 'フリーランス',    subtitle: '個人事業主として参画',     rgb: '213,48,101' },
+  { key: 'ses',       title: 'SES・受託開発',   subtitle: '客先常駐・受託として参画', rgb: '20,73,142'  },
+];
+
+/* ------------------------------------------------------------------ *
  * 職務経歴(新しい順)
  *
  * techs の各要素は [表示名, categories のキー]。
@@ -186,12 +282,12 @@ export const works = [
  * ------------------------------------------------------------------ */
 export const career = [
   {
-    period: '2025.06 – 現在',
-    duration: null,
+    phase: 'product',
+    start: '2025.06', end: '2026.08', durationMonths: null,
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
-    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しています。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しています。',
+    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しました。',
     phases: ['企画', '要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -213,8 +309,8 @@ export const career = [
     ],
   },
   {
-    period: '2021.09 – 現在',
-    duration: null,
+    phase: 'freelance',
+    start: '2021.09', end: null, durationMonths: null,
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
     team: '5〜12名',
@@ -235,8 +331,8 @@ export const career = [
     ],
   },
   {
-    period: '2023.01 – 2023.12',
-    duration: '11ヶ月',
+    phase: 'freelance',
+    start: '2023.01', end: '2023.12', durationMonths: 11,
     title: '副業マッチングプラットフォームの新規リプレース、および既存システムの改修',
     role: '開発メンバー',
     team: '5名',
@@ -254,8 +350,8 @@ export const career = [
     ],
   },
   {
-    period: '2021.04 – 2021.09',
-    duration: '6ヶ月',
+    phase: 'ses',
+    start: '2021.04', end: '2021.09', durationMonths: 6,
     title: 'アプリマーケティングプラットフォームのコア機能改修',
     role: '開発メンバー',
     team: '4名',
@@ -274,8 +370,8 @@ export const career = [
     ],
   },
   {
-    period: '2021.01 – 2021.03',
-    duration: '3ヶ月',
+    phase: 'ses',
+    start: '2021.01', end: '2021.03', durationMonths: 3,
     title: 'ビジネスシーンにおける顧客との新たな非対面コミュニケーションツールの新規開発',
     role: 'サブリーダー',
     team: '3〜4名',
@@ -296,8 +392,8 @@ export const career = [
     ],
   },
   {
-    period: '2018.10 – 2020.12',
-    duration: '26ヶ月',
+    phase: 'ses',
+    start: '2018.10', end: '2020.12', durationMonths: 26,
     title: 'イベント用品のレンタル・販売サービスの業務システムのリプレース',
     role: '開発メンバー',
     team: '3〜5名',
@@ -316,8 +412,8 @@ export const career = [
     ],
   },
   {
-    period: '2018.07 – 2018.09',
-    duration: '2ヶ月',
+    phase: 'ses',
+    start: '2018.07', end: '2018.09', durationMonths: 2,
     title: 'TV番組広告登録ツールの刷新',
     role: 'リーダー',
     team: '3名',
@@ -334,8 +430,8 @@ export const career = [
     ],
   },
   {
-    period: '2018.05 – 2018.06',
-    duration: '2ヶ月',
+    phase: 'ses',
+    start: '2018.05', end: '2018.06', durationMonths: 2,
     title: '不動産情報のコンテンツフィルタリングシステム(API)の開発',
     role: '開発メンバー',
     team: '3名',
@@ -351,8 +447,8 @@ export const career = [
     ],
   },
   {
-    period: '2018.04',
-    duration: '1ヶ月',
+    phase: 'ses',
+    start: '2018.04', end: '2018.04', durationMonths: 1,
     title: 'イベントの入退場管理アプリケーションのモバイル版の開発',
     role: '開発メンバー',
     team: '2名',
@@ -365,8 +461,8 @@ export const career = [
     ],
   },
   {
-    period: '2015.07 – 2018.03',
-    duration: '33ヶ月',
+    phase: 'ses',
+    start: '2015.07', end: '2018.03', durationMonths: 33,
     title: '大手金融システムの開発保守',
     role: '開発＆保守メンバー',
     team: '4〜14名',

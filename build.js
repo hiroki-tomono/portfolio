@@ -18,8 +18,10 @@ import {
   links,
   about,
   categories,
+  skillBarMaxYears,
   skillGroups,
   works,
+  careerPhases,
   career,
   certifications,
   footer,
@@ -43,11 +45,13 @@ const esc = (value) =>
 /** カテゴリキーを解決する。未知のキーは other にフォールバック。 */
 const cat = (key) => categories[key] ?? categories.other;
 
-/** 全スキル中の最長年数。これを 100% としてバーの長さを決める。 */
-const MAX_YEARS = Math.max(...skillGroups.flatMap((g) => g.skills.map((s) => s.years)));
+/** バーが満タンになる年数。data の skillBarMaxYears が null なら最長年数に合わせる。 */
+const MAX_YEARS =
+  skillBarMaxYears ??
+  Math.max(...skillGroups.flatMap((g) => g.subs.flatMap((sub) => sub.skills.map((s) => s.years))));
 
 /**
- * バーの長さ。0年 = 20%、最長年数 = 100%。
+ * バーの長さ。0年 = 20%、MAX_YEARS 以上 = 100%。
  * 0年でも「そこにバーがある」ことが分かるよう 20% の下駄を履かせている。
  */
 const barWidth = (years) =>
@@ -56,6 +60,42 @@ const barWidth = (years) =>
 /** バーの濃さ。習熟度 1〜5 に対応する不透明度。 */
 const LEVEL_ALPHA = [0.12, 0.25, 0.45, 0.7, 1];
 const barAlpha = (level) => LEVEL_ALPHA[Math.min(Math.max(level, 1), 5) - 1];
+
+/* ---- 職務経歴の期間 ---------------------------------------------- */
+
+/** 'YYYY.MM' を通し月数に。 */
+const toMonths = (s) => {
+  const [y, m] = s.split('.').map(Number);
+  return y * 12 + (m ?? 1);
+};
+
+/** ビルド時点の通し月数。 */
+const NOW_MONTHS = (() => {
+  const d = new Date();
+  return d.getFullYear() * 12 + d.getMonth() + 1;
+})();
+
+/** 月数を「◯年◯ヶ月」に。 */
+const formatMonths = (m) => {
+  const y = Math.floor(m / 12);
+  const rest = m % 12;
+  if (y && rest) return `${y}年${rest}ヶ月`;
+  if (y) return `${y}年`;
+  return `${rest}ヶ月`;
+};
+
+/** 「2021.09 – 現在」のような表示。開始と終了が同じ月なら開始だけ。 */
+const periodLabel = (c) => {
+  if (!c.end) return `${c.start} – 現在`;
+  return c.start === c.end ? c.start : `${c.start} – ${c.end}`;
+};
+
+/**
+ * 参画期間。durationMonths が入っていればその値（職務経歴書の記載）を使い、
+ * 在籍中（end: null）は開始月から現在までを計算する。
+ */
+const durationMonths = (c) =>
+  c.durationMonths ?? (c.end ? toMonths(c.end) - toMonths(c.start) : NOW_MONTHS - toMonths(c.start));
 
 /** 経験年数の表示。1年未満は「◯ヶ月」に切り替える。 */
 const formatYears = (years) => {
@@ -170,18 +210,27 @@ const renderAbout = () => {
 const renderSkill = (skill, group) => {
   const { num, unit } = formatYears(skill.years);
   return lines(
-    '              <div class="skill">',
-    `                <span class="skill__name">${esc(skill.name)}</span>`,
+    '                  <div class="skill">',
+    `                    <span class="skill__name">${esc(skill.name)}</span>`,
     // バーの長さ=経験年数、色の濃さ=習熟度。数値は年数の欄で読めるので装飾扱い。
-    '                <div class="skill__track" aria-hidden="true">',
-    `                  <div class="skill__bar" style="--bar-width: ${barWidth(skill.years)}; --bar-color: rgba(${group.rgb}, ${barAlpha(skill.level)});"></div>`,
-    '                </div>',
-    '                <span class="skill__years">',
-    `                  <span class="skill__years-num">${esc(num)}</span><span class="skill__years-unit">${esc(unit)}</span>`,
-    '                </span>',
-    '              </div>'
+    '                    <div class="skill__track" aria-hidden="true">',
+    `                      <div class="skill__bar" style="--bar-width: ${barWidth(skill.years)}; --bar-color: rgba(${group.rgb}, ${barAlpha(skill.level)});"></div>`,
+    '                    </div>',
+    '                    <span class="skill__years">',
+    `                      <span class="skill__years-num">${esc(num)}</span><span class="skill__years-unit">${esc(unit)}</span>`,
+    '                    </span>',
+    '                  </div>'
   );
 };
+
+/** 言語 / フレームワークの小分類。label が空なら見出しなしで並べる。 */
+const renderSkillSub = (sub, category) =>
+  lines(
+    '                <div class="skill-sub">',
+    sub.label ? `                  <p class="skill-sub__label">${esc(sub.label)}</p>` : null,
+    sub.skills.map((s) => renderSkill(s, category)).join('\n'),
+    '                </div>'
+  );
 
 const renderSkills = () => {
   const groups = skillGroups.map((g) => {
@@ -193,7 +242,7 @@ const renderSkills = () => {
       `                <h3 class="skill-group__title">${esc(c.title)}</h3>`,
       '              </div>',
       '              <div class="skill-group__list">',
-      g.skills.map((s) => renderSkill(s, c)).join('\n'),
+      g.subs.map((sub) => renderSkillSub(sub, c)).join('\n'),
       '              </div>',
       '            </div>'
     );
@@ -265,50 +314,78 @@ const renderWorks = () => {
   );
 };
 
-const renderCareer = () => {
-  const entries = career.map((c) => {
-    const roleText = [c.role, c.team].filter(Boolean).join(' · ');
-    return lines(
-      '            <div class="career__entry">',
-      '              <div class="career__when">',
-      `                <div class="career__period">${esc(c.period)}</div>`,
-      c.duration
-        ? `                <div class="career__duration">${esc(c.duration)}</div>`
-        : null,
-      '              </div>',
-      '              <div>',
-      '                <div class="career__head">',
-      `                  <h3 class="career__title">${esc(c.title)}</h3>`,
-      roleText ? `                  <span class="career__role">${esc(roleText)}</span>` : null,
-      '                </div>',
-      `                <p class="career__desc">${esc(c.desc)}</p>`,
-      c.phases?.length
-        ? lines(
-            '                <p class="career__phases">',
-            `                  <span class="career__meta-label">担当工程</span>${esc(c.phases.join(' / '))}`,
-            '                </p>'
-          )
-        : null,
-      '                <div class="career__techs">',
-      '                  <span class="career__meta-label">使用技術</span>',
-      c.techs
-        .map(
-          ([name, key]) =>
-            `                  <span class="chip" style="--cat-rgb: ${cat(key).rgb};">${esc(name)}</span>`
+/** フェーズの期間見出し。属するエントリの最初の開始年〜最後の終了年（在籍中は現在）。 */
+const phaseRange = (entries) => {
+  const from = entries.reduce((min, c) => (c.start < min ? c.start : min), entries[0].start);
+  if (entries.some((c) => !c.end)) return `${from.slice(0, 4)} – 現在`;
+  const to = entries.reduce((max, c) => (c.end > max ? c.end : max), entries[0].end);
+  return `${from.slice(0, 4)} – ${to.slice(0, 4)}`;
+};
+
+const renderCareerEntry = (c) => {
+  const roleText = [c.role, c.team].filter(Boolean).join(' · ');
+  return lines(
+    '                <div class="career__entry">',
+    '                  <div class="career__when">',
+    `                    <div class="career__period">${esc(periodLabel(c))}</div>`,
+    // 在籍中の案件は data-since を付けて、閲覧時にブラウザ側で再計算する。
+    `                    <div class="career__duration"${c.end ? '' : ` data-since="${esc(c.start.replace('.', '-'))}"`}>${esc(formatMonths(durationMonths(c)))}</div>`,
+    '                  </div>',
+    '                  <div>',
+    '                    <div class="career__head">',
+    `                      <h3 class="career__title">${esc(c.title)}</h3>`,
+    roleText ? `                      <span class="career__role">${esc(roleText)}</span>` : null,
+    '                    </div>',
+    `                    <p class="career__desc">${esc(c.desc)}</p>`,
+    c.phases?.length
+      ? lines(
+          '                    <p class="career__phases">',
+          `                      <span class="career__meta-label">担当工程</span>${esc(c.phases.join(' / '))}`,
+          '                    </p>'
         )
-        .join('\n'),
-      '                </div>',
-      '              </div>',
-      '            </div>'
+      : null,
+    '                    <div class="career__techs">',
+    '                      <span class="career__meta-label">使用技術</span>',
+    c.techs
+      .map(
+        ([name, key]) =>
+          `                      <span class="chip" style="--cat-rgb: ${cat(key).rgb};">${esc(name)}</span>`
+      )
+      .join('\n'),
+    '                    </div>',
+    '                  </div>',
+    '                </div>'
+  );
+};
+
+const renderCareer = () => {
+  // careerPhases の順に、その働き方に属するエントリをまとめる。
+  const blocks = careerPhases
+    .map((phase) => ({ phase, entries: career.filter((c) => c.phase === phase.key) }))
+    .filter(({ entries }) => entries.length)
+    .map(({ phase, entries }) =>
+      lines(
+        `            <div class="career-phase" style="--phase-rgb: ${phase.rgb};">`,
+        '              <div class="career-phase__head">',
+        `                <h3 class="career-phase__title">${esc(phase.title)}</h3>`,
+        phase.subtitle
+          ? `                <p class="career-phase__subtitle">${esc(phase.subtitle)}</p>`
+          : null,
+        `                <p class="career-phase__range">${esc(phaseRange(entries))}</p>`,
+        '              </div>',
+        '              <div class="career-phase__body">',
+        entries.map(renderCareerEntry).join('\n'),
+        '              </div>',
+        '            </div>'
+      )
     );
-  });
 
   return lines(
     '        <section class="card section" id="career" aria-labelledby="career-title">',
     '          <p class="section__eyebrow">Career</p>',
     '          <h2 class="section__title" id="career-title">職務経歴</h2>',
     '          <div class="career">',
-    entries.join('\n'),
+    blocks.join('\n'),
     '          </div>',
     '        </section>'
   );
@@ -352,7 +429,7 @@ const renderJsonLd = () => {
     jobTitle: profile.role,
     description: profile.description,
     address: { '@type': 'PostalAddress', addressLocality: profile.location },
-    knowsAbout: skillGroups.flatMap((g) => g.skills.map((s) => s.name)),
+    knowsAbout: skillGroups.flatMap((g) => g.subs.flatMap((sub) => sub.skills.map((s) => s.name))),
     ...(flags.showCertifications && certifications?.length
       ? {
           hasCredential: certifications.map((c) => ({
@@ -375,15 +452,17 @@ const renderJsonLd = () => {
  * ページ全体
  * ------------------------------------------------------------------ */
 
+const pageTitle = profile.pageTitle || `${profile.name} | ${profile.role}`;
+
 const html = lines(
   '<!DOCTYPE html>',
   '<html lang="ja">',
   '<head>',
   '  <meta charset="utf-8">',
   '  <meta name="viewport" content="width=device-width, initial-scale=1">',
-  `  <title>${esc(profile.name)} | ${esc(profile.role)}</title>`,
+  `  <title>${esc(pageTitle)}</title>`,
   `  <meta name="description" content="${esc(profile.description)}">`,
-  `  <meta property="og:title" content="${esc(profile.name)} | ${esc(profile.role)}">`,
+  `  <meta property="og:title" content="${esc(pageTitle)}">`,
   `  <meta property="og:description" content="${esc(profile.description)}">`,
   '  <meta property="og:type" content="profile">',
   '  <link rel="preconnect" href="https://fonts.googleapis.com">',
@@ -405,6 +484,22 @@ const html = lines(
   `        <p class="footer">${esc(footer)}</p>`,
   '      </main>',
   '  </div>',
+  // 在籍中の案件の参画期間を、閲覧時点で計算し直す。
+  // ビルド時の値がすでに入っているので、JS が無効でも表示は崩れない。
+  '  <script>',
+  '    (function () {',
+  '      var d = new Date();',
+  '      var now = d.getFullYear() * 12 + d.getMonth() + 1;',
+  '      document.querySelectorAll("[data-since]").forEach(function (el) {',
+  '        var p = el.getAttribute("data-since").split("-");',
+  '        var m = now - (Number(p[0]) * 12 + Number(p[1]));',
+  '        if (!(m > 0)) return;',
+  '        var y = Math.floor(m / 12);',
+  '        var rest = m % 12;',
+  '        el.textContent = y && rest ? y + "年" + rest + "ヶ月" : y ? y + "年" : rest + "ヶ月";',
+  '      });',
+  '    })();',
+  '  </script>',
   '</body>',
   '</html>',
   ''
