@@ -607,6 +607,18 @@ a:hover { color: var(--mj-primary-dark); }
   margin: 0 0 0.5rem;
 }
 
+.career__points { margin: 0 0 0.6rem; }
+
+.career__points-list {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--mj-gray);
+  margin: 0.15rem 0 0;
+  padding-left: 1.2rem;
+}
+.career__points-list li { margin: 0.2rem 0; padding-left: 0.1rem; }
+.career__points-list li::marker { color: rgb(var(--phase-rgb)); }
+
 .career__phases {
   font-size: 0.72rem;
   line-height: 1.9;

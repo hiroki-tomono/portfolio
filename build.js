@@ -340,6 +340,16 @@ const renderCareerEntry = (c) => {
     roleText ? `                      <span class="career__role">${esc(roleText)}</span>` : null,
     '                    </div>',
     `                    <p class="career__desc">${esc(c.desc)}</p>`,
+    c.points?.length
+      ? lines(
+          '                    <div class="career__points">',
+          '                      <span class="career__meta-label">主な実績</span>',
+          '                      <ul class="career__points-list">',
+          c.points.map((pt) => `                        <li>${esc(pt)}</li>`).join('\n'),
+          '                      </ul>',
+          '                    </div>'
+        )
+      : null,
     c.phases?.length
       ? lines(
           '                    <p class="career__phases">',
