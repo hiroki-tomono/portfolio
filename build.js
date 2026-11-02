@@ -178,6 +178,9 @@ const renderSidebar = () =>
       : null,
     '          <div class="sidebar__rule" aria-hidden="true"></div>',
     `          <p class="sidebar__role">${esc(profile.role)}</p>`,
+    profile.tagline
+      ? `          <p class="sidebar__tagline">${esc(profile.tagline)}</p>`
+      : null,
     `          <p class="sidebar__location">${esc(profile.location)}</p>`,
     '        </div>',
     renderNav(),

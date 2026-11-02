@@ -177,6 +177,13 @@ a:hover { color: var(--mj-primary-dark); }
   margin: 0;
 }
 
+.sidebar__tagline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mj-primary);
+  margin: 0.35rem 0 0;
+}
+
 .sidebar__location {
   font-size: 0.72rem;
   color: var(--mj-light-gray);

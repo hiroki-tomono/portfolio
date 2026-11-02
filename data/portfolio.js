@@ -24,7 +24,7 @@ export const flags = {
   /** サイドバーの Zenn リンク */
   showZenn: false,
   /** サイドバーの Email ボタン */
-  showEmail: false,
+  showEmail: true,
 };
 
 /* ------------------------------------------------------------------ *
@@ -36,6 +36,8 @@ export const profile = {
   nameKana: 'ともの ひろき',
   nameEn: 'Hiroki Tomono',
   role: 'Webエンジニア',
+  /** 肩書きの下に出る、強みを示す一行。null なら表示しません。 */
+  tagline: 'Rails × プロダクト開発・性能改善',
   location: '神奈川県',
   /** ブラウザのタブと OGP に出るページタイトル。 */
   pageTitle: '友野弘樹 | ポートフォリオ',
@@ -59,7 +61,7 @@ export const links = {
   // 公開前に実際の URL / アドレスに置き換えてください(flags で表示を制御します)。
   github: '',
   zenn: '',
-  email: '',
+  email: 'sato1208hiro@gmail.com',
 };
 
 /* ------------------------------------------------------------------ *
@@ -68,24 +70,24 @@ export const links = {
 export const about = {
   /** 概要(リード文) */
   summary:
-    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から運用までを一貫して担当しました。現在はフリーランスとして受託開発・開発保守に対応しています。',
+    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(8年)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から実証実験までを一貫して担当しました。現在はフリーランスとして受託開発・開発保守に対応しています。',
 
   /** 自己PR。見出しの色は categories のキーで指定します。 */
   highlights: [
     {
       category: 'be',
       title: 'バックエンドからインフラまで一気通貫の対応力',
-      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担いました。少人数チームでの即戦力として貢献できます。',
+      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。本番のモニタリングから遅い API を自ら見つけ、実行計画の分析とクエリ改善で応答時間を最大約95%短縮するなど、性能改善にも継続して取り組んでいます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担いました。少人数チームでの即戦力として貢献できます。',
     },
     {
       category: 'ai',
       title: 'AI駆動開発による高い生産性',
-      body: 'Claude Code を活用した AI 駆動開発を業務に本格導入しており、設計・実装・テストコード作成・リファクタリングの各工程で開発速度と品質の両立を実現しています。新しい技術やツールを積極的に取り入れ、開発プロセスの改善に継続的に取り組んでいます。',
+      body: 'Claude Code を活用した AI 駆動開発を業務に本格導入しており、設計・実装・テストコード作成・リファクタリングの各工程で開発速度と品質の両立を実現しています。チームでは、結合テストケースの作成などに使う Claude Code の共有スキルを整備し、チーム全体の開発効率の向上にも貢献しています。新しい技術やツールを積極的に取り入れ、開発プロセスの改善に継続的に取り組んでいます。',
     },
     {
       category: 'fe',
       title: '信頼関係の構築力とプロアクティブな姿勢',
-      body: 'これまで参画したすべてのプロジェクトでチームメンバーや顧客との信頼関係の構築に成功しています。常に「どうすれば良くなるか」を考え、他の人が敬遠するタスクも積極的に担当し、チームの課題を自ら発見して改善案を提示してきました。早めのレスポンス、自発的な情報発信、否定から入らないコミュニケーションを心がけ、チーム全体の生産性向上に貢献しています。',
+      body: 'これまで参画したすべてのプロジェクトでチームメンバーや顧客との信頼関係の構築に成功しています。現在の教育系プラットフォームの案件では5年以上契約が続いており、他メンバーの Pull Request を1,100件以上レビューしてチームのコード品質を支えてきました。常に「どうすれば良くなるか」を考え、他の人が敬遠するタスクも積極的に担当し、チームの課題を自ら発見して改善案を提示してきました。早めのレスポンス、自発的な情報発信、否定から入らないコミュニケーションを心がけ、チーム全体の生産性向上に貢献しています。',
     },
   ],
 };
@@ -114,7 +116,9 @@ export const categories = {
 export const skillBarMaxYears = 8;
 
 /**
- * スキルセット。職務経歴に登場する技術をすべて掲載しています。
+ * スキルセット。職務経歴に登場する技術のうち、応募先へのアピールにつながるものを掲載しています。
+ * 古い技術や短期間だけ使ったもの(Eclipse・SVN・JP1・VBA・Windows・Ubuntu・
+ * Amazon EC2 / S3・React Native)は、職務経歴の技術タグにだけ残しています。
  *
  * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク など）で
  * 分けます。`label` を空文字にすると小見出しなしで並びます。
@@ -166,7 +170,7 @@ export const skillGroups = [
         label: '言語',
         skills: [
           { name: 'JavaScript', years: 10,    level: 4 },
-          { name: 'TypeScript', years: 0.25,  level: 2 },
+          { name: 'TypeScript', years: 4,     level: 4 },
         ],
       },
       {
@@ -176,7 +180,7 @@ export const skillGroups = [
           { name: 'Next.js',      years: 5,      level: 4 },
           { name: 'jQuery',       years: 2,      level: 3 },
           { name: 'Vue.js',       years: 1,      level: 3 },
-          { name: 'React Native', years: 1 / 12, level: 1 },
+          { name: 'Nuxt.js',      years: 1,      level: 3 },
         ],
       },
     ],
@@ -199,8 +203,6 @@ export const skillGroups = [
           { name: 'AWS',        years: 5,    level: 4 },
           { name: 'Vercel',     years: 1,    level: 3 },
           { name: 'Terraform',  years: 0.5,  level: 3 },
-          { name: 'Amazon EC2', years: 0.25, level: 3 },
-          { name: 'Amazon S3',  years: 0.25, level: 3 },
         ],
       },
       {
@@ -208,12 +210,7 @@ export const skillGroups = [
         skills: [
           { name: 'Git',            years: 8, level: 5 },
           { name: 'Docker',         years: 6, level: 4 },
-          { name: 'Ubuntu',         years: 3, level: 3 },
-          { name: 'Windows',        years: 3, level: 3 },
-          { name: 'Eclipse',        years: 3, level: 3 },
-          { name: 'SVN',            years: 3, level: 3 },
-          { name: 'JP1',            years: 3, level: 2 },
-          { name: 'VBA',            years: 2, level: 3 },
+          { name: 'Datadog',        years: 2, level: 4 },
           { name: 'GitHub Actions', years: 1, level: 4 },
           { name: 'ChatOps',        years: 1, level: 3 },
           { name: 'Resend',         years: 1, level: 3 },
@@ -287,7 +284,7 @@ export const career = [
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
-    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しました。',
+    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しました。イベント会社やキッチンカープラットフォーム運営企業から好反応を得て実証実験を行い、導入店舗の運用負荷が最大の課題であることを検証したうえで、2026年8月に事業を終了しました。',
     phases: ['企画', '要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -314,7 +311,7 @@ export const career = [
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
     team: '5〜12名',
-    desc: '学習管理プラットフォームサービスの開発・保守に4年以上継続して従事(SES 案件として開始後、フリーランス転向後も継続中)。Rails + React / Next.js による SPA 構成のアプリケーションで、機能開発・改修・パフォーマンス改善を担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携や、AI駆動開発による開発効率の向上にも取り組んでいます。',
+    desc: '学習管理プラットフォームサービスの開発・保守に5年以上継続して従事(SES 案件として開始後、フリーランス転向後も継続中)。Rails + React / Next.js (TypeScript) による SPA 構成のアプリケーションで、機能開発・改修・パフォーマンス改善を担当しています。本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮しました。参画以来、他メンバーの Pull Request を1,100件以上レビューし、チームのコード品質を支えています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携にも対応。AI駆動開発では、結合テストケース作成などの Claude Code のチーム共有スキルを整備し、チームの開発効率の向上に貢献しています。',
     phases: ['実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -323,8 +320,10 @@ export const career = [
       ['RSpec', 'be'],
       ['React', 'fe'],
       ['Next.js', 'fe'],
+      ['TypeScript', 'fe'],
       ['AWS', 'infra'],
       ['BigQuery', 'infra'],
+      ['Datadog', 'infra'],
       ['Docker', 'infra'],
       ['Git', 'infra'],
       ['AI駆動開発 (Claude Code)', 'ai'],
@@ -345,6 +344,7 @@ export const career = [
       ['RSpec', 'be'],
       ['JavaScript', 'fe'],
       ['Vue.js', 'fe'],
+      ['Nuxt.js', 'fe'],
       ['Docker', 'infra'],
       ['Git', 'infra'],
     ],
