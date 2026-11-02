@@ -4,7 +4,8 @@
  * このファイルだけを編集して `npm run build` を実行すれば index.html が再生成されます。
  * HTML を直接編集する必要はありません。
  *
- * 内容の出典: 職務経歴書(2026年7月時点)
+ * 内容の出典: 職務経歴書(2026年7月時点)。2026年11月に転職活動向けに見直し、
+ * 実績の数値は GitHub / Slack / Datadog の記録で裏づけています。
  */
 
 /* ------------------------------------------------------------------ *
@@ -16,15 +17,14 @@ export const flags = {
   /** 資格セクションを表示する。 */
   showCertifications: true,
 
-  // ↓ 公開前に URL / アドレスを入れてから true にしてください。
-  //   職務経歴書には電話番号しか記載がなかったため、初期値は false にしています。
+  // ↓ links に URL / アドレスを入れてから true にしてください。
   //   (電話番号は公開ページに載せない方針で、意図的に含めていません)
   /** サイドバーの GitHub リンク */
   showGitHub: false,
   /** サイドバーの Zenn リンク */
   showZenn: false,
   /** サイドバーの Email ボタン */
-  showEmail: false,
+  showEmail: true,
 };
 
 /* ------------------------------------------------------------------ *
@@ -36,6 +36,8 @@ export const profile = {
   nameKana: 'ともの ひろき',
   nameEn: 'Hiroki Tomono',
   role: 'Webエンジニア',
+  /** 肩書きの下に出る、強みを示す一行。null なら表示しません。 */
+  tagline: 'Rails × プロダクト開発・性能改善',
   location: '神奈川県',
   /** ブラウザのタブと OGP に出るページタイトル。 */
   pageTitle: '友野弘樹 | ポートフォリオ',
@@ -56,10 +58,10 @@ export const profile = {
 };
 
 export const links = {
-  // 公開前に実際の URL / アドレスに置き換えてください(flags で表示を制御します)。
+  // 表示の有無は flags で制御します。空文字のものは flags 側も false のままにしてください。
   github: '',
   zenn: '',
-  email: '',
+  email: 'sato1208hiro@gmail.com',
 };
 
 /* ------------------------------------------------------------------ *
@@ -68,24 +70,24 @@ export const links = {
 export const about = {
   /** 概要(リード文) */
   summary:
-    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(7年半)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から運用までを一貫して担当しました。現在はフリーランスとして受託開発・開発保守に対応しています。',
+    'エンジニア歴10年超のWebエンジニアです。Ruby on Rails(8年)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画から実証実験までを一貫して担当しました。現在はフリーランスとして教育系プラットフォームの開発保守を担当しています。',
 
   /** 自己PR。見出しの色は categories のキーで指定します。 */
   highlights: [
     {
       category: 'be',
       title: 'バックエンドからインフラまで一気通貫の対応力',
-      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。自社プロダクト Mogupick では企画からリリースまでを代表2名体制で担いました。少人数チームでの即戦力として貢献できます。',
+      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。本番のモニタリングから見つけた遅い API を改善し、応答時間を最大約95%短縮しました。自社プロダクト Mogupick では、企画から実証実験までを共同創業者と2名で担いました。',
     },
     {
       category: 'ai',
-      title: 'AI駆動開発による高い生産性',
-      body: 'Claude Code を活用した AI 駆動開発を業務に本格導入しており、設計・実装・テストコード作成・リファクタリングの各工程で開発速度と品質の両立を実現しています。新しい技術やツールを積極的に取り入れ、開発プロセスの改善に継続的に取り組んでいます。',
+      title: 'AI駆動開発の実践とチームへの展開',
+      body: 'Claude Code を使った AI 駆動開発を、設計・実装・テストコード作成・リファクタリングの各工程で業務に取り入れています。自社プロダクト Mogupick では開発から運用までを Claude Code 前提で進め、教育系プラットフォームの案件では、結合テストケースの作成などに使う Claude Code の共有スキルを整備し、チームで使えるようにしました。',
     },
     {
       category: 'fe',
-      title: '信頼関係の構築力とプロアクティブな姿勢',
-      body: 'これまで参画したすべてのプロジェクトでチームメンバーや顧客との信頼関係の構築に成功しています。常に「どうすれば良くなるか」を考え、他の人が敬遠するタスクも積極的に担当し、チームの課題を自ら発見して改善案を提示してきました。早めのレスポンス、自発的な情報発信、否定から入らないコミュニケーションを心がけ、チーム全体の生産性向上に貢献しています。',
+      title: '合意形成とレビュー、障害対応で築いた信頼',
+      body: '教育系プラットフォームの案件には2021年から参画し、5年以上契約が続いています。他メンバーの Pull Request を1,100件以上レビューしてきました。設計方針を変えるときは、論点と理由を文書にまとめ、PdM やチームと合意してから進めています。障害時の影響範囲の調査のように手間のかかる作業も自分から引き受け、原因と再発防止策をポストモーテムにまとめてチームに共有しています。',
     },
   ],
 };
@@ -114,7 +116,9 @@ export const categories = {
 export const skillBarMaxYears = 8;
 
 /**
- * スキルセット。職務経歴に登場する技術をすべて掲載しています。
+ * スキルセット。職務経歴に登場する技術のうち、応募先へのアピールにつながるものを掲載しています。
+ * 古い技術や短期間だけ使ったもの(Eclipse・SVN・JP1・VBA・Windows・Ubuntu・
+ * Amazon EC2 / S3・React Native)は、職務経歴の技術タグにだけ残しています。
  *
  * カテゴリ（技術領域）の中を、さらに `subs`（言語 / フレームワーク など）で
  * 分けます。`label` を空文字にすると小見出しなしで並びます。
@@ -166,17 +170,17 @@ export const skillGroups = [
         label: '言語',
         skills: [
           { name: 'JavaScript', years: 10,    level: 4 },
-          { name: 'TypeScript', years: 0.25,  level: 2 },
+          { name: 'TypeScript', years: 4,     level: 4 },
         ],
       },
       {
         label: 'フレームワーク',
         skills: [
-          { name: 'React.js',     years: 5,      level: 4 },
+          { name: 'React',        years: 5,      level: 4 },
           { name: 'Next.js',      years: 5,      level: 4 },
           { name: 'jQuery',       years: 2,      level: 3 },
-          { name: 'Vue.js',       years: 1,      level: 3 },
-          { name: 'React Native', years: 1 / 12, level: 1 },
+          { name: 'Vue.js',       years: 1.5,    level: 3 },
+          { name: 'Nuxt.js',      years: 1,      level: 3 },
         ],
       },
     ],
@@ -199,8 +203,6 @@ export const skillGroups = [
           { name: 'AWS',        years: 5,    level: 4 },
           { name: 'Vercel',     years: 1,    level: 3 },
           { name: 'Terraform',  years: 0.5,  level: 3 },
-          { name: 'Amazon EC2', years: 0.25, level: 3 },
-          { name: 'Amazon S3',  years: 0.25, level: 3 },
         ],
       },
       {
@@ -208,12 +210,7 @@ export const skillGroups = [
         skills: [
           { name: 'Git',            years: 8, level: 5 },
           { name: 'Docker',         years: 6, level: 4 },
-          { name: 'Ubuntu',         years: 3, level: 3 },
-          { name: 'Windows',        years: 3, level: 3 },
-          { name: 'Eclipse',        years: 3, level: 3 },
-          { name: 'SVN',            years: 3, level: 3 },
-          { name: 'JP1',            years: 3, level: 2 },
-          { name: 'VBA',            years: 2, level: 3 },
+          { name: 'Datadog',        years: 2, level: 4 },
           { name: 'GitHub Actions', years: 1, level: 4 },
           { name: 'ChatOps',        years: 1, level: 3 },
           { name: 'Resend',         years: 1, level: 3 },
@@ -241,10 +238,10 @@ export const works = [
     role: '代表 兼 リードエンジニア',
     /** 役職バッジの色。categories のキー、または任意の CSS 色。 */
     roleCategory: 'be',
-    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。',
+    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。実証実験を経て、2026年8月に事業を終了しました。',
     tags: ['Rails API', 'Next.js', 'Stripe', 'AWS / Terraform'],
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
-    href: 'https://lp.mogupick.com/merchant',
+    href: 'https://lp.mogupick.majiyuru.com/merchant',
 
     /**
      * 画像。assets/img/ に置いたファイルへのパス。null ならプレースホルダー表示。
@@ -279,6 +276,10 @@ export const careerPhases = [
  *
  * techs の各要素は [表示名, categories のキー]。
  * スキルセットと同じ色でチップが描画されます。
+ *
+ * points(任意)は「主な実績」の箇条書き。desc には概要だけを書き、
+ * 読み手に拾ってほしい実績は points に分けると流し読みでも届きます。
+ * 各項目は体言止めでそろえてください。
  * ------------------------------------------------------------------ */
 export const career = [
   {
@@ -287,7 +288,7 @@ export const career = [
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
-    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、少人数チームで高い生産性を実現しました。',
+    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、2名で開発から運用までを担いました。イベント会社やキッチンカープラットフォームの運営企業と実証実験を行い、導入店舗の運用負荷が最大の課題であることを確かめたうえで、2026年8月に事業を終了しました。',
     phases: ['企画', '要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -314,8 +315,16 @@ export const career = [
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
     team: '5〜12名',
-    desc: '学習管理プラットフォームサービスの開発・保守に4年以上継続して従事(SES 案件として開始後、フリーランス転向後も継続中)。Rails + React / Next.js による SPA 構成のアプリケーションで、機能開発・改修・パフォーマンス改善を担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携や、AI駆動開発による開発効率の向上にも取り組んでいます。',
-    phases: ['実装', 'テスト', '保守・運用'],
+    desc: '学習管理プラットフォームサービスの開発・保守に5年以上継続して従事(SES 案件として開始し、フリーランス転向後も継続)。Rails + React / Next.js(TypeScript)による SPA 構成のアプリケーションで、仕様策定・設計から実装、運用までを担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携にも対応。',
+    points: [
+      '新機能の仕様書・設計書を自ら作成してチームのレビューを取りまとめ、論理削除の導入などの設計方針は論点と理由を文書に整理して PdM と合意のうえ推進',
+      '本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮',
+      '外部の教材事業者向け連携 API の開発と外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導',
+      '障害時にログから影響を受けた校舎・生徒を特定して CS(カスタマーサポート)の個別連絡を支援し、原因と再発防止策をポストモーテムに整理',
+      '参画以来、他メンバーの Pull Request を1,100件以上レビュー',
+      '結合テストケース作成などに使う Claude Code のチーム共有スキルを整備',
+    ],
+    phases: ['要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
       ['Rails', 'be'],
@@ -323,8 +332,10 @@ export const career = [
       ['RSpec', 'be'],
       ['React', 'fe'],
       ['Next.js', 'fe'],
+      ['TypeScript', 'fe'],
       ['AWS', 'infra'],
       ['BigQuery', 'infra'],
+      ['Datadog', 'infra'],
       ['Docker', 'infra'],
       ['Git', 'infra'],
       ['AI駆動開発 (Claude Code)', 'ai'],
@@ -336,7 +347,7 @@ export const career = [
     title: '副業マッチングプラットフォームの新規リプレース、および既存システムの改修',
     role: '開発メンバー',
     team: '5名',
-    desc: '副業マッチングサービスの既存システム改修および新規リプレイスに副業として参画。既存システムでは Rails / JavaScript による軽微な修正を中心に、インボイス制度対応などの法制度関連の改修を担当しました。新規リプレイスでは SPA 構成(Rails API + Nuxt.js)での開発に携わり、email / GitHub / Facebook によるマルチプロバイダ認証機能の設計・実装を担当しました。',
+    desc: '副業マッチングサービスの既存システム改修および新規リプレースに副業として参画。既存システムでは Rails / JavaScript で、インボイス制度対応などの法制度関連の改修を担当しました。新規リプレースでは SPA 構成(Rails API + Nuxt.js)での開発に携わり、email / GitHub / Facebook によるマルチプロバイダ認証機能の設計・実装を担当しました。',
     phases: ['実装', 'テスト'],
     techs: [
       ['Ruby', 'be'],
@@ -345,6 +356,7 @@ export const career = [
       ['RSpec', 'be'],
       ['JavaScript', 'fe'],
       ['Vue.js', 'fe'],
+      ['Nuxt.js', 'fe'],
       ['Docker', 'infra'],
       ['Git', 'infra'],
     ],
@@ -355,7 +367,7 @@ export const career = [
     title: 'アプリマーケティングプラットフォームのコア機能改修',
     role: '開発メンバー',
     team: '4名',
-    desc: 'アプリマーケティングプラットフォームのカスタマイズ開発(API)およびコア機能の改修に参画。Rails API の機能追加・改修と、Vue.js による SPA 構成の管理画面の改修を担当しました。AWS / Docker 環境での開発・テスト・運用を経験し、フルリモート体制でのチーム開発に従事しました。',
+    desc: 'アプリマーケティングプラットフォームのカスタマイズ開発(API)およびコア機能の改修に参画。Rails API の機能追加・改修と、Vue.js による SPA 構成の管理画面の改修を担当しました。AWS / Docker 環境での開発・テスト・運用も担当し、フルリモート体制でチーム開発を行いました。',
     phases: ['実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -375,7 +387,7 @@ export const career = [
     title: 'ビジネスシーンにおける顧客との新たな非対面コミュニケーションツールの新規開発',
     role: 'サブリーダー',
     team: '3〜4名',
-    desc: 'SMS 送信をトリガーとしたプッシュ型チャットサービスの新規開発にサブリーダーとして参画。Rails + ActionCable + Vue.js / TypeScript によるリアルタイムチャット機能の設計・実装を担当しました。AWS(EC2 / S3)上への本番環境構築、Docker 導入、Sentry → Slack 通知による監視体制の整備など、インフラ・運用面も含めた包括的な開発経験を積みました。',
+    desc: 'SMS 送信をトリガーとしたプッシュ型チャットサービスの新規開発にサブリーダーとして参画。チャット機能の技術選定を行い、Rails + ActionCable + Vue.js / TypeScript によるリアルタイムチャット機能を設計・実装しました。顧客とのやり取りを担当し、他メンバーのコードレビューとフォローも行いました。AWS(EC2 / S3)上への本番環境構築、Docker 導入、Sentry → Slack 通知による監視体制の整備まで、インフラ・運用面も担当しました。',
     phases: ['要件定義', '基本設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -401,7 +413,7 @@ export const career = [
     phases: ['基本設計', '実装', 'テスト'],
     techs: [
       ['Java', 'be'],
-      ['Spring', 'be'],
+      ['Spring Framework', 'be'],
       ['MySQL', 'be'],
       ['PostgreSQL', 'be'],
       ['JUnit', 'be'],
@@ -452,7 +464,7 @@ export const career = [
     title: 'イベントの入退場管理アプリケーションのモバイル版の開発',
     role: '開発メンバー',
     team: '2名',
-    desc: 'イベント会場向けの入退場管理アプリケーション(モバイル版)の開発に参画。React Native を用いたモバイルアプリの実装を担当しました。短期間・少人数のプロジェクトで、途中参画ながらスピーディに実装を完了しました。',
+    desc: 'イベント会場向けの入退場管理アプリケーション(モバイル版)の開発に途中から参画。React Native を用いたモバイルアプリの実装を担当しました。',
     phases: ['実装'],
     techs: [
       ['React Native', 'fe'],
@@ -466,7 +478,7 @@ export const career = [
     title: '大手金融システムの開発保守',
     role: '開発＆保守メンバー',
     team: '4〜14名',
-    desc: '大手金融機関向け基幹システムの開発および保守に約3年間従事。Java / Oracle / JP1 を用いたバッチ処理やオンライン機能の設計・実装・テストを担当しました。顧客へのヒアリング用資料作成(仕様確認・工数根拠提示)、基本設計書、テスト設計書(単体・IT・ST)の作成を経験し、上流工程から保守運用まで一通りの開発プロセスを習得しました。チーム規模は最大14名で、大規模プロジェクトにおけるチーム開発の進め方を身につけました。',
+    desc: '大手金融機関向け基幹システムの開発および保守に約3年間従事。Java / Oracle / JP1 を用いたバッチ処理やオンライン機能の設計・実装・テストを担当しました。顧客へのヒアリング用資料作成(仕様確認・工数根拠提示)、基本設計書、テスト設計書(単体・IT・ST)の作成を担当し、上流工程から保守運用までの工程に携わりました。',
     phases: ['要件定義', '基本設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Java', 'be'],
