@@ -37,7 +37,7 @@ export const profile = {
   nameEn: 'Hiroki Tomono',
   role: 'Webエンジニア',
   /** 肩書きの下に出る、強みを示す一行。null なら表示しません。 */
-  tagline: 'Rails × プロダクト開発・性能改善',
+  tagline: 'Rails API × 性能改善 × AI駆動開発',
   location: '神奈川県',
   /** ブラウザのタブと OGP に出るページタイトル。 */
   pageTitle: '友野弘樹 | ポートフォリオ',
@@ -54,7 +54,7 @@ export const profile = {
   portraitPosition: null,
   /** <meta name="description"> に使われます。 */
   description:
-    'Webエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails を主軸にフロントエンドからインフラまで一貫して対応。自社プロダクト「Mogupick」を代表兼リードエンジニアとして立ち上げました。',
+    'Webエンジニア 友野 弘樹のポートフォリオ。エンジニア歴10年超、Ruby on Rails の API 開発と性能改善を主軸に、フロントエンドからインフラまで対応。Claude Code のスキル整備による AI 駆動開発を実践し、自社プロダクト「Mogupick」を代表兼リードエンジニアとして立ち上げました。',
 };
 
 export const links = {
@@ -77,12 +77,12 @@ export const about = {
     {
       category: 'be',
       title: 'バックエンドからインフラまで一気通貫の対応力',
-      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue による非同期処理基盤の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。本番のモニタリングから見つけた遅い API を改善し、応答時間を最大約95%短縮しました。自社プロダクト Mogupick では、企画から実証実験までを共同創業者と2名で担いました。',
+      body: 'Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue / Sidekiq による非同期処理の設計など、プロダクト開発に必要な技術領域を幅広くカバーできます。本番のモニタリングから見つけた遅い API を実行計画の分析とインデックス設計で改善し、応答時間を最大約95%短縮しました。自社プロダクト Mogupick では、企画から実証実験までを共同創業者と2名で担いました。',
     },
     {
       category: 'ai',
-      title: 'AI駆動開発の実践とチームへの展開',
-      body: 'Claude Code を使った AI 駆動開発を、設計・実装・テストコード作成・リファクタリングの各工程で業務に取り入れています。自社プロダクト Mogupick では開発から運用までを Claude Code 前提で進め、教育系プラットフォームの案件では、結合テストケースの作成などに使う Claude Code の共有スキルを整備し、チームで使えるようにしました。',
+      title: 'AI駆動開発の実践と開発フローへの組み込み',
+      body: 'Claude Code を設計・実装・テストコード作成・レビューの各工程で使い、業務フローに合わせたスキルを約30本整備しています。Notion・Sentry・Slack・GitHub と MCP で連携し、仕様書の作成、設計書のレビュー下書き、Sentry の障害調査、脆弱性チケットの起票などを Claude Code から行えるようにしました。教育系プラットフォームの案件では、結合テストケース作成などのスキルをチームに展開し、AI を使った質問応答・面談記録機能の API 開発も担当しました。自社プロダクト Mogupick では、仕様策定から実装・レビューまでを Claude Code 前提の開発フローで進めました。',
     },
     {
       category: 'fe',
@@ -157,6 +157,7 @@ export const skillGroups = [
         skills: [
           { name: 'RSpec',       years: 6, level: 4 },
           { name: 'JUnit',       years: 2, level: 2 },
+          { name: 'Sidekiq',     years: 5, level: 3 },
           { name: 'Solid Queue', years: 1, level: 3 },
           { name: 'Stripe',      years: 1, level: 3 },
         ],
@@ -203,6 +204,8 @@ export const skillGroups = [
           { name: 'AWS',        years: 5,    level: 4 },
           { name: 'Vercel',     years: 1,    level: 3 },
           { name: 'Terraform',  years: 0.5,  level: 3 },
+          { name: 'Amazon ECS', years: 1,    level: 3 },
+          { name: 'AWS Lambda', years: 1,    level: 3 },
         ],
       },
       {
@@ -211,6 +214,8 @@ export const skillGroups = [
           { name: 'Git',            years: 8, level: 5 },
           { name: 'Docker',         years: 6, level: 4 },
           { name: 'Datadog',        years: 2, level: 4 },
+          { name: 'Sentry',         years: 5, level: 3 },
+          { name: 'CircleCI',       years: 5, level: 3 },
           { name: 'GitHub Actions', years: 1, level: 4 },
           { name: 'ChatOps',        years: 1, level: 3 },
           { name: 'Resend',         years: 1, level: 3 },
@@ -223,7 +228,7 @@ export const skillGroups = [
     subs: [
       {
         label: '',
-        skills: [{ name: 'AI駆動開発', years: 1, level: 4 }],
+        skills: [{ name: 'AI駆動開発 (Claude Code)', years: 1.4, level: 4 }],
       },
     ],
   },
@@ -238,7 +243,7 @@ export const works = [
     role: '代表 兼 リードエンジニア',
     /** 役職バッジの色。categories のキー、または任意の CSS 色。 */
     roleCategory: 'be',
-    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。実証実験を経て、2026年8月に事業を終了しました。',
+    desc: 'イベント・キッチンカー向けのモバイルオーダープラットフォーム。来場者がスマートフォンで注文し、店舗が管理画面で受け付けます。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用まで全工程を担当しました。実証実験を経て、2026年8月に事業を終了しました。',
     tags: ['Rails API', 'Next.js', 'Stripe', 'AWS / Terraform'],
     /** 公開 URL。null ならリンクにならず、カードとして表示されます。 */
     href: 'https://lp.mogupick.majiyuru.com/merchant',
@@ -288,7 +293,13 @@ export const career = [
     title: 'イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ',
     role: '代表 兼 リードエンジニア',
     team: '2名',
-    desc: '自社プロダクト「Mogupick」の企画・設計・開発を推進。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)、決済は Stripe、非同期処理は Solid Queue、メール配信は Resend で構成しました。AWS 上のインフラを Terraform でコード管理し、GitHub Actions による CI/CD パイプラインと ChatOps による運用自動化を構築。AI駆動開発(Claude Code)を全面的に活用し、2名で開発から運用までを担いました。イベント会社やキッチンカープラットフォームの運営企業と実証実験を行い、導入店舗の運用負荷が最大の課題であることを確かめたうえで、2026年8月に事業を終了しました。',
+    desc: '自社プロダクト「Mogupick」(来場者がスマートフォンで注文するモバイルオーダー)の企画・設計・開発を共同創業者と2名で担当。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)で、来場者向けの注文アプリ・店舗向け管理画面・イベント主催者向け画面の3つを構成しました。イベント会社やキッチンカープラットフォームの運営企業と実証実験を行い、導入店舗の運用負荷が最大の課題であることを確かめたうえで、2026年8月に事業を終了しました。',
+    points: [
+      'Terraform で AWS(ECS / Lambda / API Gateway / CloudWatch / S3)をコード管理し、GitHub Actions によるデプロイパイプラインと、利用の少ない時間帯に環境を停止・起動するコスト抑制の自動化を構築',
+      'Stripe Connect による決済・精算、Solid Queue による非同期処理、Resend によるメール配信の設計・実装',
+      'rack-attack によるレート制限、N+1 クエリの解消などの安全・性能対策',
+      '仕様策定から実装・レビューまでを Claude Code 前提の開発フローで運用し、GitHub Actions 上でも Claude Code を実行',
+    ],
     phases: ['企画', '要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
@@ -300,6 +311,8 @@ export const career = [
       ['Next.js', 'fe'],
       ['Vercel', 'fe'],
       ['AWS', 'infra'],
+      ['Amazon ECS', 'infra'],
+      ['AWS Lambda', 'infra'],
       ['Terraform', 'infra'],
       ['Docker', 'infra'],
       ['GitHub Actions', 'infra'],
@@ -315,20 +328,25 @@ export const career = [
     title: '教育系プラットフォームの開発保守',
     role: '開発メンバー',
     team: '5〜12名',
-    desc: '学習管理プラットフォームサービスの開発・保守に5年以上継続して従事(SES 案件として開始し、フリーランス転向後も継続)。Rails + React / Next.js(TypeScript)による SPA 構成のアプリケーションで、仕様策定・設計から実装、運用までを担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携にも対応。',
+    desc: '学習管理プラットフォームサービスの開発・保守に5年以上継続して従事(SES 案件として開始し、フリーランス転向後も継続)。Rails + React / Next.js(TypeScript)による SPA 構成で、校舎向け Web と生徒向けアプリの両方について、仕様策定・設計から実装、運用までを担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携にも対応。',
     points: [
       '新機能の仕様書・設計書を自ら作成してチームのレビューを取りまとめ、論理削除の導入などの設計方針は論点と理由を文書に整理して PdM と合意のうえ推進',
       '本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮',
       '外部の教材事業者向け連携 API の開発と外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導',
       '障害時にログから影響を受けた校舎・生徒を特定して CS(カスタマーサポート)の個別連絡を支援し、原因と再発防止策をポストモーテムに整理',
       '参画以来、他メンバーの Pull Request を1,100件以上レビュー',
-      '結合テストケース作成などに使う Claude Code のチーム共有スキルを整備',
+      'AI を使った質問応答・面談記録機能の API 開発',
+      'CircleCI で変更差分に応じてテストと RuboCop を省略する仕組みを改善し、判定できないときは全件実行する安全側の設計に変更。Ruby のバージョンアップも担当',
+      '結合テストケース作成などに使う Claude Code のスキルを整備し、チームに展開',
     ],
     phases: ['要件定義', '基本設計', '詳細設計', '実装', 'テスト', '保守・運用'],
     techs: [
       ['Ruby', 'be'],
       ['Rails', 'be'],
       ['MySQL', 'be'],
+      ['Redis', 'be'],
+      ['Sidekiq', 'be'],
+      ['OpenAPI', 'be'],
       ['RSpec', 'be'],
       ['React', 'fe'],
       ['Next.js', 'fe'],
@@ -336,6 +354,8 @@ export const career = [
       ['AWS', 'infra'],
       ['BigQuery', 'infra'],
       ['Datadog', 'infra'],
+      ['Sentry', 'infra'],
+      ['CircleCI', 'infra'],
       ['Docker', 'infra'],
       ['Git', 'infra'],
       ['AI駆動開発 (Claude Code)', 'ai'],
