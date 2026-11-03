@@ -633,7 +633,7 @@
                       <span class="career__meta-label">主な実績</span>
                       <ul class="career__points-list">
                         <li>本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮。生徒数の増加で長時間化していた一括更新バッチも、activerecord-import による分割コミットに変更して短縮</li>
-                        <li>学習記録の取り込み・集計ジョブで頻発していた MySQL のデッドロックを、ロック待ち情報からギャップロックが原因と特定し、トランザクション分離レベルの変更と排他ロックの取得順序の整理で解消</li>
+                        <li>学習記録の取り込み・集計ジョブで頻発していた MySQL のデッドロックを、ロック待ち情報からギャップロックが原因と特定し、トランザクション分離レベルの変更と排他ロックの事前取得で解消</li>
                         <li>新機能の仕様書・設計書を自ら作成してチームのレビューを取りまとめ、論理削除の導入などの設計方針は論点と理由を文書に整理して PdM と合意のうえ推進</li>
                         <li>外部の教材事業者向け連携 API の開発と、OpenAPI 定義・外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導。LTI(学習ツール連携の標準規格)や Google Classroom との連携機能の実装にも参加</li>
                         <li>Rails 7 の Active Record Encryption を導入し、旧方式の暗号化処理が性能面のボトルネックになっていた生徒名の暗号化方式の移行(キー設定、二重書き込み、既存データの移行ジョブ、変更履歴への平文記録の防止)を担当</li>
@@ -641,7 +641,7 @@
                         <li>結合テストケース作成などに使う Claude Code のスキルを整備してチームに展開。生徒の AI 質問履歴を校舎向け画面に取り込む API の設計・実装も担当</li>
                         <li>参画以来、他メンバーの Pull Request を1,100件以上レビュー</li>
                         <li>障害時にログから影響を受けた校舎・生徒を特定して CS(カスタマーサポート)の個別連絡を支援し、原因と再発防止策をポストモーテムに整理</li>
-                        <li>Rails 7.0 から 7.1、React 17 から 18、react-router v5 から v6、react-query v3 から v5、chart.js v2 から v3 などのメジャーアップデートと、Ruby・Next.js・TypeScript・Node.js の更新</li>
+                        <li>Rails 7.0 から 7.1、React 17 から 18、react-router v5 から v6、react-query v3 から v5、chart.js v2 から v4 などのメジャーアップデートと、Ruby・Next.js・TypeScript・Node.js の更新</li>
                       </ul>
                     </div>
                     <p class="career__phases">
