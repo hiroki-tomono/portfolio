@@ -113,6 +113,7 @@
 <body>
   <!-- このファイルは data/portfolio.js から生成されています。直接編集せず、
        データを書き換えて `npm run build` を実行してください。 -->
+  <a class="skip-link" href="#main">本文へ移動</a>
   <div class="page">
       <aside class="card sidebar">
         <div class="sidebar__portrait">
@@ -138,21 +139,21 @@
           <a class="pill pill--solid" href="mailto:sato1208hiro@gmail.com">Email</a>
         </div>
       </aside>
-      <main class="main">
+      <main class="main" id="main">
         <section class="card section" id="about" aria-labelledby="about-title">
           <p class="section__eyebrow">About</p>
           <h2 class="section__title" id="about-title">自己紹介</h2>
           <p class="about__body">エンジニア歴10年超のWebエンジニアです。Ruby on Rails(8年)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画・開発から営業、実証実験までを担当しました。現在はフリーランスとして教育系プラットフォームの開発保守を担当しています。</p>
           <div class="highlights">
-            <div class="highlight" style="--cat-color: rgb(20,73,142);">
+            <div class="highlight" style="--cat-color: rgb(0,23,193);">
               <h3 class="highlight__title">バックエンドからインフラまで一気通貫の対応力</h3>
               <p class="highlight__body">Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue / Sidekiq を使った非同期処理など、プロダクト開発に必要な技術領域を一通り担当してきました。本番のモニタリングから見つけた遅い API を実行計画の分析とインデックス設計で改善し、応答時間を最大約95%短縮しました。頻発していた MySQL のデッドロックも、ロック情報の分析から原因を特定して解消しました。自社プロダクト Mogupick は、共同創業者と2名で立ち上げました。</p>
             </div>
-            <div class="highlight" style="--cat-color: rgb(106,43,184);">
+            <div class="highlight" style="--cat-color: rgb(92,16,190);">
               <h3 class="highlight__title">AI駆動開発の実践と開発フローへの組み込み</h3>
               <p class="highlight__body">Claude Code を設計・実装・テストコード作成・レビューの各工程で使い、業務フローに合わせたスキルを約30本整備しています。Notion・Sentry の MCP(外部ツール連携)と gh コマンドを組み合わせ、仕様書の作成、設計書のレビュー下書き、Sentry の障害調査、Sidekiq の失敗ジョブの整理、脆弱性チケットの起票を Claude Code から行えるようにしました。教育系プラットフォームの案件では、結合テストケース作成などのスキルをチームに展開しています。</p>
             </div>
-            <div class="highlight" style="--cat-color: rgb(213,48,101);">
+            <div class="highlight" style="--cat-color: rgb(139,0,139);">
               <h3 class="highlight__title">設計の合意形成、レビュー、障害対応</h3>
               <p class="highlight__body">教育系プラットフォームの案件には2021年から参画し、5年以上契約が続いています。他メンバーの Pull Request を1,100件以上レビューしてきました。設計方針を変えるときは、論点と理由を文書にまとめ、PdM(プロダクトマネージャー)やチームと合意してから進めています。障害時の影響範囲の調査のように手間のかかる作業も自分から引き受け、原因と再発防止策をポストモーテムにまとめてチームに共有しています。</p>
             </div>
@@ -162,7 +163,7 @@
           <p class="section__eyebrow">Skills</p>
           <h2 class="section__title" id="skills-title">スキルセット</h2>
           <div class="skills">
-            <div class="skill-group" style="--cat-color: rgb(20,73,142);">
+            <div class="skill-group" style="--cat-color: rgb(0,23,193);">
               <div class="skill-group__head">
                 <span class="skill-group__dot" aria-hidden="true"></span>
                 <h3 class="skill-group__title">バックエンド</h3>
@@ -173,7 +174,7 @@
                   <div class="skill">
                     <span class="skill__name">Ruby</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(20,73,142, 1);"></div>
+                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(0,23,193, 1);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">9</span><span class="skill__years-unit">年</span>
@@ -182,7 +183,7 @@
                   <div class="skill">
                     <span class="skill__name">Java</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(20,73,142, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(0,23,193, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -194,7 +195,7 @@
                   <div class="skill">
                     <span class="skill__name">Ruby on Rails</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(20,73,142, 1);"></div>
+                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(0,23,193, 1);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">8</span><span class="skill__years-unit">年</span>
@@ -203,7 +204,7 @@
                   <div class="skill">
                     <span class="skill__name">Spring Framework</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(20,73,142, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(0,23,193, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">2</span><span class="skill__years-unit">年</span>
@@ -215,7 +216,7 @@
                   <div class="skill">
                     <span class="skill__name">RSpec</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 80%; --bar-color: rgba(20,73,142, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 80%; --bar-color: rgba(0,23,193, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">6</span><span class="skill__years-unit">年</span>
@@ -224,7 +225,7 @@
                   <div class="skill">
                     <span class="skill__name">JUnit</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(20,73,142, 0.25);"></div>
+                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(0,23,193, 0.35);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">2</span><span class="skill__years-unit">年</span>
@@ -233,7 +234,7 @@
                   <div class="skill">
                     <span class="skill__name">Sidekiq</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(20,73,142, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(0,23,193, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -242,7 +243,7 @@
                   <div class="skill">
                     <span class="skill__name">Solid Queue</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(20,73,142, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(0,23,193, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -251,7 +252,7 @@
                   <div class="skill">
                     <span class="skill__name">Stripe</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(20,73,142, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(0,23,193, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -260,7 +261,7 @@
                 </div>
               </div>
             </div>
-            <div class="skill-group" style="--cat-color: rgb(213,48,101);">
+            <div class="skill-group" style="--cat-color: rgb(139,0,139);">
               <div class="skill-group__head">
                 <span class="skill-group__dot" aria-hidden="true"></span>
                 <h3 class="skill-group__title">フロントエンド</h3>
@@ -271,7 +272,7 @@
                   <div class="skill">
                     <span class="skill__name">JavaScript</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(213,48,101, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(139,0,139, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">10</span><span class="skill__years-unit">年</span>
@@ -280,7 +281,7 @@
                   <div class="skill">
                     <span class="skill__name">TypeScript</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(213,48,101, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(139,0,139, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -292,7 +293,7 @@
                   <div class="skill">
                     <span class="skill__name">React</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(213,48,101, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(139,0,139, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -301,7 +302,7 @@
                   <div class="skill">
                     <span class="skill__name">Next.js</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(213,48,101, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(139,0,139, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -310,7 +311,7 @@
                   <div class="skill">
                     <span class="skill__name">jQuery</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(213,48,101, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(139,0,139, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">2</span><span class="skill__years-unit">年</span>
@@ -319,7 +320,7 @@
                   <div class="skill">
                     <span class="skill__name">Vue.js</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 35%; --bar-color: rgba(213,48,101, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 35%; --bar-color: rgba(139,0,139, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1.5</span><span class="skill__years-unit">年</span>
@@ -328,7 +329,7 @@
                   <div class="skill">
                     <span class="skill__name">Nuxt.js</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(213,48,101, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(139,0,139, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -337,7 +338,7 @@
                 </div>
               </div>
             </div>
-            <div class="skill-group" style="--cat-color: rgb(47,165,156);">
+            <div class="skill-group" style="--cat-color: rgb(25,122,75);">
               <div class="skill-group__head">
                 <span class="skill-group__dot" aria-hidden="true"></span>
                 <h3 class="skill-group__title">インフラ・ミドルウェア</h3>
@@ -348,7 +349,7 @@
                   <div class="skill">
                     <span class="skill__name">MySQL</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">8</span><span class="skill__years-unit">年</span>
@@ -357,7 +358,7 @@
                   <div class="skill">
                     <span class="skill__name">PostgreSQL</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 60%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 60%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">4</span><span class="skill__years-unit">年</span>
@@ -366,7 +367,7 @@
                   <div class="skill">
                     <span class="skill__name">Oracle</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 50%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 50%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">3</span><span class="skill__years-unit">年</span>
@@ -375,7 +376,7 @@
                   <div class="skill">
                     <span class="skill__name">BigQuery</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(47,165,156, 0.25);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(25,122,75, 0.35);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -387,7 +388,7 @@
                   <div class="skill">
                     <span class="skill__name">AWS</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -396,7 +397,7 @@
                   <div class="skill">
                     <span class="skill__name">Vercel</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -405,7 +406,7 @@
                   <div class="skill">
                     <span class="skill__name">Terraform</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">6</span><span class="skill__years-unit">ヶ月</span>
@@ -414,7 +415,7 @@
                   <div class="skill">
                     <span class="skill__name">Amazon ECS</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">6</span><span class="skill__years-unit">ヶ月</span>
@@ -423,7 +424,7 @@
                   <div class="skill">
                     <span class="skill__name">AWS Lambda</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 25%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">6</span><span class="skill__years-unit">ヶ月</span>
@@ -435,7 +436,7 @@
                   <div class="skill">
                     <span class="skill__name">Git</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(47,165,156, 1);"></div>
+                      <div class="skill__bar" style="--bar-width: 100%; --bar-color: rgba(25,122,75, 1);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">8</span><span class="skill__years-unit">年</span>
@@ -444,7 +445,7 @@
                   <div class="skill">
                     <span class="skill__name">Docker</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 80%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 80%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">6</span><span class="skill__years-unit">年</span>
@@ -453,7 +454,7 @@
                   <div class="skill">
                     <span class="skill__name">Datadog</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 40%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">2</span><span class="skill__years-unit">年</span>
@@ -462,7 +463,7 @@
                   <div class="skill">
                     <span class="skill__name">Sentry</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -471,7 +472,7 @@
                   <div class="skill">
                     <span class="skill__name">CircleCI</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
@@ -480,7 +481,7 @@
                   <div class="skill">
                     <span class="skill__name">GitHub Actions</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(47,165,156, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(25,122,75, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -489,7 +490,7 @@
                   <div class="skill">
                     <span class="skill__name">ChatOps</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -498,7 +499,7 @@
                   <div class="skill">
                     <span class="skill__name">Resend</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(47,165,156, 0.45);"></div>
+                      <div class="skill__bar" style="--bar-width: 30%; --bar-color: rgba(25,122,75, 0.55);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1</span><span class="skill__years-unit">年</span>
@@ -507,7 +508,7 @@
                 </div>
               </div>
             </div>
-            <div class="skill-group" style="--cat-color: rgb(106,43,184);">
+            <div class="skill-group" style="--cat-color: rgb(92,16,190);">
               <div class="skill-group__head">
                 <span class="skill-group__dot" aria-hidden="true"></span>
                 <h3 class="skill-group__title">AI活用</h3>
@@ -517,7 +518,7 @@
                   <div class="skill">
                     <span class="skill__name">AI駆動開発(Claude Code)</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 34%; --bar-color: rgba(106,43,184, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 34%; --bar-color: rgba(92,16,190, 0.75);"></div>
                     </div>
                     <span class="skill__years">
                       <span class="skill__years-num">1.4</span><span class="skill__years-unit">年</span>
@@ -538,8 +539,8 @@
               </div>
               <div class="work__body">
                 <div class="work__head">
-                  <h3 class="work__title">Mogupick</h3>
-                  <span class="work__role" style="--role-color: rgb(20,73,142);">代表 兼 リードエンジニア</span>
+                  <h3 class="work__title">Mogupick<span class="visually-hidden">(新しいタブで開きます)</span></h3>
+                  <span class="work__role" style="--role-color: rgb(0,23,193);">代表 兼 リードエンジニア</span>
                 </div>
                 <p class="work__desc">イベント・キッチンカー向けのモバイルオーダープラットフォーム。来場者がスマートフォンで注文し、店舗が管理画面で受け付けます。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用までの全工程に加え、営業と実証実験の運用サポートも担当しました。実証実験を経て、2026年8月に事業を終了しました。</p>
                 <div class="work__tags">
@@ -556,7 +557,7 @@
           <p class="section__eyebrow">Career</p>
           <h2 class="section__title" id="career-title">職務経歴</h2>
           <div class="career">
-            <div class="career-phase" style="--phase-rgb: 47,165,156;">
+            <div class="career-phase" style="--phase-rgb: 25,122,75;">
               <div class="career-phase__head">
                 <h3 class="career-phase__title">自社プロダクト</h3>
                 <p class="career-phase__subtitle">事業として開発</p>
@@ -588,30 +589,30 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">PostgreSQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Solid Queue</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Stripe</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Next.js</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Vercel</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">AWS</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Amazon ECS</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">AWS Lambda</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Terraform</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Docker</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">GitHub Actions</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">ChatOps</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Resend</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
-                      <span class="chip" style="--cat-rgb: 106,43,184;">AI駆動開発(Claude Code)</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">PostgreSQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Solid Queue</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Stripe</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Next.js</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Vercel</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">AWS</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Amazon ECS</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">AWS Lambda</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Terraform</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Docker</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">GitHub Actions</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">ChatOps</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Resend</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
+                      <span class="chip" style="--cat-rgb: 92,16,190;">AI駆動開発(Claude Code)</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="career-phase" style="--phase-rgb: 213,48,101;">
+            <div class="career-phase" style="--phase-rgb: 139,0,139;">
               <div class="career-phase__head">
                 <h3 class="career-phase__title">フリーランス</h3>
                 <p class="career-phase__subtitle">個人事業主として参画</p>
@@ -649,24 +650,24 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Redis</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Sidekiq</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">OpenAPI</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">React</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Next.js</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">TypeScript</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">AWS</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">BigQuery</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Datadog</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Sentry</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">CircleCI</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Docker</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
-                      <span class="chip" style="--cat-rgb: 106,43,184;">AI駆動開発(Claude Code)</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Redis</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Sidekiq</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">OpenAPI</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">React</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Next.js</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">TypeScript</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">AWS</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">BigQuery</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Datadog</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Sentry</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">CircleCI</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Docker</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
+                      <span class="chip" style="--cat-rgb: 92,16,190;">AI駆動開発(Claude Code)</span>
                     </div>
                   </div>
                 </div>
@@ -686,21 +687,21 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">JavaScript</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Vue.js</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Nuxt.js</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Docker</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">JavaScript</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Vue.js</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Nuxt.js</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Docker</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="career-phase" style="--phase-rgb: 20,73,142;">
+            <div class="career-phase" style="--phase-rgb: 0,23,193;">
               <div class="career-phase__head">
                 <h3 class="career-phase__title">SES・受託開発</h3>
                 <p class="career-phase__subtitle">客先常駐・受託として参画</p>
@@ -723,15 +724,15 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Vue.js</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">AWS</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Docker</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Ubuntu</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Vue.js</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">AWS</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Docker</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Ubuntu</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
@@ -751,17 +752,17 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">PostgreSQL</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">Vue.js</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">TypeScript</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">AWS</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Amazon EC2</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Amazon S3</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Docker</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Ubuntu</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">PostgreSQL</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">Vue.js</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">TypeScript</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">AWS</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Amazon EC2</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Amazon S3</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Docker</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Ubuntu</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
@@ -781,15 +782,15 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Java</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Spring Framework</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">PostgreSQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">JUnit</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">jQuery</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Ubuntu</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
-                      <span class="chip" style="--cat-rgb: 108,114,120;">VBA</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Java</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Spring Framework</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">PostgreSQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">JUnit</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">jQuery</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Ubuntu</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
+                      <span class="chip" style="--cat-rgb: 102,102,102;">VBA</span>
                     </div>
                   </div>
                 </div>
@@ -809,13 +810,13 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">jQuery</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Ubuntu</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">jQuery</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Ubuntu</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
@@ -835,12 +836,12 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Ruby</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Rails</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">MySQL</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">RSpec</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Ubuntu</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Ruby</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Rails</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">MySQL</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">RSpec</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Ubuntu</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
@@ -860,9 +861,9 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 213,48,101;">React Native</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Windows</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Git</span>
+                      <span class="chip" style="--cat-rgb: 139,0,139;">React Native</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Windows</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Git</span>
                     </div>
                   </div>
                 </div>
@@ -882,12 +883,12 @@
                     </p>
                     <div class="career__techs">
                       <span class="career__meta-label">使用技術</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Java</span>
-                      <span class="chip" style="--cat-rgb: 20,73,142;">Oracle</span>
-                      <span class="chip" style="--cat-rgb: 108,114,120;">JP1</span>
-                      <span class="chip" style="--cat-rgb: 108,114,120;">Eclipse</span>
-                      <span class="chip" style="--cat-rgb: 108,114,120;">SVN</span>
-                      <span class="chip" style="--cat-rgb: 47,165,156;">Windows</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Java</span>
+                      <span class="chip" style="--cat-rgb: 0,23,193;">Oracle</span>
+                      <span class="chip" style="--cat-rgb: 102,102,102;">JP1</span>
+                      <span class="chip" style="--cat-rgb: 102,102,102;">Eclipse</span>
+                      <span class="chip" style="--cat-rgb: 102,102,102;">SVN</span>
+                      <span class="chip" style="--cat-rgb: 25,122,75;">Windows</span>
                     </div>
                   </div>
                 </div>

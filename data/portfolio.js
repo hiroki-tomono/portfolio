@@ -99,11 +99,11 @@ export const about = {
  * 職務経歴の使用技術チップで共通して使われます。
  * ------------------------------------------------------------------ */
 export const categories = {
-  be:    { title: 'バックエンド',             rgb: '20,73,142'  },
-  fe:    { title: 'フロントエンド',           rgb: '213,48,101' },
-  infra: { title: 'インフラ・ミドルウェア',   rgb: '47,165,156' },
-  ai:    { title: 'AI活用',                   rgb: '106,43,184' },
-  other: { title: 'その他',                   rgb: '108,114,120' },
+  be:    { title: 'バックエンド',             rgb: '0,23,193'   },   // DADS Blue-900
+  fe:    { title: 'フロントエンド',           rgb: '139,0,139'  },   // DADS Magenta-900
+  infra: { title: 'インフラ・ミドルウェア',   rgb: '25,122,75'  },   // DADS Green-800
+  ai:    { title: 'AI活用',                   rgb: '92,16,190'  },   // DADS Purple-800
+  other: { title: 'その他',                   rgb: '102,102,102' }, // DADS Solid-Gray-600
 };
 
 /**
@@ -271,9 +271,9 @@ export const works = [
  * 期間の見出しは、そのフェーズに属するエントリから自動で算出されます。
  * ------------------------------------------------------------------ */
 export const careerPhases = [
-  { key: 'product',   title: '自社プロダクト',  subtitle: '事業として開発',           rgb: '47,165,156'  },
-  { key: 'freelance', title: 'フリーランス',    subtitle: '個人事業主として参画',     rgb: '213,48,101' },
-  { key: 'ses',       title: 'SES・受託開発',   subtitle: '客先常駐・受託として参画', rgb: '20,73,142'  },
+  { key: 'product',   title: '自社プロダクト',  subtitle: '事業として開発',           rgb: '25,122,75'  },
+  { key: 'freelance', title: 'フリーランス',    subtitle: '個人事業主として参画',     rgb: '139,0,139'  },
+  { key: 'ses',       title: 'SES・受託開発',   subtitle: '客先常駐・受託として参画', rgb: '0,23,193'   },
 ];
 
 /* ------------------------------------------------------------------ *

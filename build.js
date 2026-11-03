@@ -58,7 +58,7 @@ const barWidth = (years) =>
   Math.round(Math.min(20 + (years / MAX_YEARS) * 80, 100)) + '%';
 
 /** バーの濃さ。習熟度 1〜5 に対応する不透明度。 */
-const LEVEL_ALPHA = [0.12, 0.25, 0.45, 0.7, 1];
+const LEVEL_ALPHA = [0.2, 0.35, 0.55, 0.75, 1];
 const barAlpha = (level) => LEVEL_ALPHA[Math.min(Math.max(level, 1), 5) - 1];
 
 /* ---- 職務経歴の期間 ---------------------------------------------- */
@@ -144,10 +144,10 @@ const renderLinks = () => {
   // URL が空のままのリンクは、フラグが立っていても出力しない(リンク切れ防止)。
   const items = lines(
     flags.showGitHub && links.github
-      ? `          <a class="pill pill--outline" href="${esc(links.github)}" rel="noopener noreferrer" target="_blank">GitHub</a>`
+      ? `          <a class="pill pill--outline" href="${esc(links.github)}" rel="noopener noreferrer" target="_blank">GitHub<span class="visually-hidden">(新しいタブで開きます)</span></a>`
       : null,
     flags.showZenn && links.zenn
-      ? `          <a class="pill pill--outline" href="${esc(links.zenn)}" rel="noopener noreferrer" target="_blank">Zenn</a>`
+      ? `          <a class="pill pill--outline" href="${esc(links.zenn)}" rel="noopener noreferrer" target="_blank">Zenn<span class="visually-hidden">(新しいタブで開きます)</span></a>`
       : null,
     flags.showEmail && links.email
       ? `          <a class="pill pill--solid" href="mailto:${esc(links.email)}">Email</a>`
@@ -294,7 +294,7 @@ const renderWorks = () => {
       '              </div>',
       '              <div class="work__body">',
       '                <div class="work__head">',
-      `                  <h3 class="work__title">${esc(w.title)}</h3>`,
+      `                  <h3 class="work__title">${esc(w.title)}${external ? '<span class="visually-hidden">(新しいタブで開きます)</span>' : ''}</h3>`,
       `                  <span class="work__role" style="--role-color: ${esc(roleColor)};">${esc(w.role)}</span>`,
       '                </div>',
       `                <p class="work__desc">${esc(w.desc)}</p>`,
@@ -486,9 +486,10 @@ const html = lines(
   '<body>',
   '  <!-- このファイルは data/portfolio.js から生成されています。直接編集せず、',
   '       データを書き換えて `npm run build` を実行してください。 -->',
+  '  <a class="skip-link" href="#main">本文へ移動</a>',
   '  <div class="page">',
   renderSidebar(),
-  '      <main class="main">',
+  '      <main class="main" id="main">',
   renderAbout(),
   renderSkills(),
   renderWorks(),
