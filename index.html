@@ -146,7 +146,7 @@
           <div class="highlights">
             <div class="highlight" style="--cat-color: rgb(20,73,142);">
               <h3 class="highlight__title">バックエンドからインフラまで一気通貫の対応力</h3>
-              <p class="highlight__body">Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue / Sidekiq を使った非同期処理など、プロダクト開発に必要な技術領域を一通り担当してきました。本番のモニタリングから見つけた遅い API を実行計画の分析とインデックス設計で改善し、応答時間を最大約95%短縮しました。自社プロダクト Mogupick は、共同創業者と2名で立ち上げました。</p>
+              <p class="highlight__body">Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue / Sidekiq を使った非同期処理など、プロダクト開発に必要な技術領域を一通り担当してきました。本番のモニタリングから見つけた遅い API を実行計画の分析とインデックス設計で改善し、応答時間を最大約95%短縮しました。頻発していた MySQL のデッドロックも、ロック情報の分析から原因を特定して解消しました。自社プロダクト Mogupick は、共同創業者と2名で立ち上げました。</p>
             </div>
             <div class="highlight" style="--cat-color: rgb(106,43,184);">
               <h3 class="highlight__title">AI駆動開発の実践と開発フローへの組み込み</h3>
@@ -280,10 +280,10 @@
                   <div class="skill">
                     <span class="skill__name">TypeScript</span>
                     <div class="skill__track" aria-hidden="true">
-                      <div class="skill__bar" style="--bar-width: 60%; --bar-color: rgba(213,48,101, 0.7);"></div>
+                      <div class="skill__bar" style="--bar-width: 70%; --bar-color: rgba(213,48,101, 0.7);"></div>
                     </div>
                     <span class="skill__years">
-                      <span class="skill__years-num">4</span><span class="skill__years-unit">年</span>
+                      <span class="skill__years-num">5</span><span class="skill__years-unit">年</span>
                     </span>
                   </div>
                 </div>
@@ -632,14 +632,16 @@
                     <div class="career__points">
                       <span class="career__meta-label">主な実績</span>
                       <ul class="career__points-list">
-                        <li>本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮</li>
+                        <li>本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮。生徒数の増加で長時間化していた一括更新バッチも、activerecord-import による分割コミットに変更して短縮</li>
+                        <li>学習記録の取り込み・集計ジョブで頻発していた MySQL のデッドロックを、ロック待ち情報からギャップロックが原因と特定し、トランザクション分離レベルの変更と排他ロックの取得順序の整理で解消</li>
                         <li>新機能の仕様書・設計書を自ら作成してチームのレビューを取りまとめ、論理削除の導入などの設計方針は論点と理由を文書に整理して PdM と合意のうえ推進</li>
-                        <li>外部の教材事業者向け連携 API の開発と、OpenAPI 定義・外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導</li>
-                        <li>CircleCI で変更差分に応じてテストと RuboCop を省略する仕組みを改善し、判定できないときは全件実行する安全側の設計に変更</li>
+                        <li>外部の教材事業者向け連携 API の開発と、OpenAPI 定義・外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導。LTI(学習ツール連携の標準規格)や Google Classroom との連携機能の実装にも参加</li>
+                        <li>Rails 7 の Active Record Encryption を導入し、旧方式の暗号化処理が性能面のボトルネックになっていた生徒名の暗号化方式の移行(キー設定、二重書き込み、既存データの移行ジョブ、変更履歴への平文記録の防止)を担当</li>
+                        <li>CircleCI で変更差分に応じてテストと RuboCop を省略する仕組みを改善し、判定できないときは全件実行する安全側の設計に変更。失敗したテストだけを再実行できる設定も整備</li>
                         <li>結合テストケース作成などに使う Claude Code のスキルを整備してチームに展開。生徒の AI 質問履歴を校舎向け画面に取り込む API の設計・実装も担当</li>
                         <li>参画以来、他メンバーの Pull Request を1,100件以上レビュー</li>
                         <li>障害時にログから影響を受けた校舎・生徒を特定して CS(カスタマーサポート)の個別連絡を支援し、原因と再発防止策をポストモーテムに整理</li>
-                        <li>Rails 7.0 から 7.1、React 17 から 18 へのアップデート(関連ライブラリの追従を含む)、Ruby・Next.js のパッチ更新、react-query・chart.js などフロントエンドライブラリの更新</li>
+                        <li>Rails 7.0 から 7.1、React 17 から 18、react-router v5 から v6、react-query v3 から v5、chart.js v2 から v3 などのメジャーアップデートと、Ruby・Next.js・TypeScript・Node.js の更新</li>
                       </ul>
                     </div>
                     <p class="career__phases">
