@@ -242,13 +242,13 @@ a:focus-visible {
   margin: 0;
 }
 
-/* 主色の短いアクセントライン */
+/* Majiyuru ロゴ4色のうち3色を使ったアクセントライン(ブランド要素として唯一残している) */
 .sidebar__rule {
   height: 4px;
   width: var(--sp-6);
   margin: var(--sp-2) auto;
   border-radius: var(--radius-full);
-  background: var(--color-primary);
+  background: linear-gradient(to right, #d53065, #f1af1a, #2fa59c);
 }
 
 .sidebar__role {
