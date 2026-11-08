@@ -340,10 +340,58 @@ const renderCareerEntry = (c) => {
     roleText ? `                      <span class="career__role">${esc(roleText)}</span>` : null,
     '                    </div>',
     `                    <p class="career__desc">${esc(c.desc)}</p>`,
+    c.roles?.length
+      ? lines(
+          '                    <div class="career__roles">',
+          '                      <span class="career__meta-label">役割の変化</span>',
+          '                      <ol class="career__roles-list">',
+          c.roles
+            .map((r) =>
+              lines(
+                '                        <li class="career__role-step">',
+                `                          <span class="career__role-period">${esc(r.period)}</span>`,
+                `                          <span class="career__role-title">${esc(r.title)}</span>`,
+                `                          <p class="career__role-body">${esc(r.body)}</p>`,
+                '                        </li>'
+              )
+            )
+            .join('\n'),
+          '                      </ol>',
+          '                    </div>'
+        )
+      : null,
+    c.cases?.length
+      ? lines(
+          '                    <div class="career__cases">',
+          '                      <span class="career__meta-label">代表的な取り組み</span>',
+          c.cases
+            .map((k) =>
+              lines(
+                '                      <div class="case">',
+                `                        <h4 class="case__title">${esc(k.title)}</h4>`,
+                '                        <dl class="case__body">',
+                '                          <dt>状況</dt>',
+                `                          <dd>${esc(k.situation)}</dd>`,
+                '                          <dt>行動と判断</dt>',
+                '                          <dd>',
+                '                            <ul class="case__list">',
+                k.actions.map((a) => `                              <li>${esc(a)}</li>`).join('\n'),
+                '                            </ul>',
+                '                          </dd>',
+                '                          <dt>成果</dt>',
+                `                          <dd>${esc(k.result)}</dd>`,
+                '                        </dl>',
+                '                      </div>'
+              )
+            )
+            .join('\n'),
+          '                    </div>'
+        )
+      : null,
     c.points?.length
       ? lines(
           '                    <div class="career__points">',
-          '                      <span class="career__meta-label">主な実績</span>',
+          `                      <span class="career__meta-label">${c.cases?.length ? 'その他の実績' : '主な実績'}</span>`,
           '                      <ul class="career__points-list">',
           c.points.map((pt) => `                        <li>${esc(pt)}</li>`).join('\n'),
           '                      </ul>',

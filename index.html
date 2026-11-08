@@ -143,19 +143,19 @@
         <section class="card section" id="about" aria-labelledby="about-title">
           <p class="section__eyebrow">About</p>
           <h2 class="section__title" id="about-title">自己紹介</h2>
-          <p class="about__body">エンジニア歴10年超のWebエンジニアです。Ruby on Rails(8年)を主軸としたバックエンド開発に加え、React / Next.js / Vue.js によるフロントエンド開発、AWS・Terraform を用いたインフラ構築まで一貫して対応できます。金融、流通、教育、マッチングプラットフォームなど多業種のシステム開発に携わり、要件定義からリリース・保守運用まで全工程の経験があります。自社プロダクト「Mogupick」(イベント・キッチンカー向けモバイルオーダープラットフォーム)を代表兼リードエンジニアとして立ち上げ、企画・開発から営業、実証実験までを担当しました。現在はフリーランスとして教育系プラットフォームの開発保守を担当しています。今後は、開発の実務でチームに貢献しながら、メンバーの育成や1on1などマネジメントの役割を少しずつ広げ、エンジニアリングマネージャーを目指したいと考えています。</p>
+          <p class="about__body">エンジニア歴10年超、Rails API 開発が主軸のWebエンジニアです。React / Next.js、AWS・Terraform まで担当します。教育系プラットフォームで5年以上、性能改善(集計を36秒→2秒)や新機能の設計を担い、自社プロダクト Mogupick も2名で立ち上げました。今後は開発で貢献しながら、育成や1on1から少しずつ役割を広げ、エンジニアリングマネージャーを目指します。</p>
           <div class="highlights">
             <div class="highlight" style="--cat-color: rgb(0,23,193);">
-              <h3 class="highlight__title">バックエンドからインフラまで一気通貫の対応力</h3>
-              <p class="highlight__body">Rails API の設計・実装を中心に、React / Next.js でのフロントエンド開発、AWS 上でのインフラ構築・Terraform 管理、Stripe を用いた決済機能や Solid Queue / Sidekiq を使った非同期処理など、プロダクト開発に必要な技術領域を一通り担当してきました。本番のモニタリングから見つけた遅い API を実行計画の分析とインデックス設計で改善し、応答時間を最大約95%短縮しました。頻発していた MySQL のデッドロックも、ロック情報の分析から原因を特定して解消しました。自社プロダクト Mogupick は、共同創業者と2名で立ち上げました。</p>
+              <h3 class="highlight__title">Rails API の設計から性能改善、AWS の構築まで</h3>
+              <p class="highlight__body">バックエンドは、Rails API の設計・実装から、実行計画を読んだ性能改善、MySQL のデッドロックの調査まで一通り自分で担えます。本番のモニタリングから見つけた遅い API を、クエリの書き換えやインデックスの使い分けで改善し、36秒かかっていた集計を2秒に短縮しました。フロントエンドは React / Next.js(TypeScript)で画面の実装からメジャーアップデートまで、インフラは AWS を Terraform でコード管理し、デプロイの自動化まで構築しました。Stripe Connect による決済の設計・実装や、Solid Queue / Sidekiq を使った非同期処理の実装も経験しています。</p>
             </div>
             <div class="highlight" style="--cat-color: rgb(92,16,190);">
               <h3 class="highlight__title">AI駆動開発の実践と開発フローへの組み込み</h3>
               <p class="highlight__body">Claude Code を設計・実装・テストコード作成・レビューの各工程で使い、業務フローに合わせたスキルを約30本整備しています。Notion・Sentry の MCP(外部ツール連携)と gh コマンドを組み合わせ、仕様書の作成、設計書のレビュー下書き、Sentry の障害調査、Sidekiq の失敗ジョブの整理、脆弱性チケットの起票を Claude Code から行えるようにしました。教育系プラットフォームの案件では、結合テストケース作成などのスキルをチームに展開しています。</p>
             </div>
-            <div class="highlight" style="--cat-color: rgb(139,0,139);">
+            <div class="highlight" style="--cat-color: rgb(102,102,102);">
               <h3 class="highlight__title">チーム開発の推進: 設計の合意形成、レビュー、障害対応</h3>
-              <p class="highlight__body">教育系プラットフォームの案件には2021年から参画し、5年以上契約が続いています。他メンバーの Pull Request を1,100件以上レビューしてきました。設計方針を変えるときは、論点と理由を文書にまとめ、PdM(プロダクトマネージャー)やチームと合意してから進めています。障害時の影響範囲の調査のように手間のかかる作業も自分から引き受け、原因と再発防止策をポストモーテムにまとめてチームに共有しています。</p>
+              <p class="highlight__body">教育系プラットフォームの案件には2021年から参画し、5年以上契約が続いています。他メンバーの Pull Request を1,100件以上レビューしてきました。チーム全員で設計する「モブ設計」では議論を主導することが多く、設計方針を変えるときは、論点と却下した案を文書にまとめ、PdM(プロダクトマネージャー)やチームと合意してから進めています。障害時の影響範囲の調査のように手間のかかる作業も自分から引き受け、原因と再発防止策をポストモーテムにまとめてチームに共有しています。</p>
             </div>
             <div class="highlight" style="--cat-color: rgb(102,102,102);">
               <h3 class="highlight__title">メンバーの育成・1on1・採用</h3>
@@ -546,7 +546,7 @@
                   <h3 class="work__title">Mogupick<span class="visually-hidden">(新しいタブで開きます)</span></h3>
                   <span class="work__role" style="--role-color: rgb(0,23,193);">代表 兼 リードエンジニア</span>
                 </div>
-                <p class="work__desc">イベント・キッチンカー向けのモバイルオーダープラットフォーム。来場者がスマートフォンで注文し、店舗が管理画面で受け付けます。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用までの全工程に加え、営業と実証実験の運用サポートも担当しました。実証実験を経て、2026年8月に事業を終了しました。</p>
+                <p class="work__desc">イベント・キッチンカー向けのモバイルオーダープラットフォーム。来場者がスマートフォンで注文し、店舗が管理画面で受け付けます。サービスコンセプトの策定からアーキテクチャ設計、実装、AWS 上のインフラ構築・運用までの全工程に加え、営業と実証実験の運用サポートも担当しました。1イベント・1店舗での実証実験を経て、2026年8月から事業を休止しています。</p>
                 <div class="work__tags">
                   <span class="tag">Rails API</span>
                   <span class="tag">Next.js</span>
@@ -570,20 +570,40 @@
               <div class="career-phase__body">
                 <div class="career__entry">
                   <div class="career__when">
-                    <div class="career__period">2025.06 – 2026.08</div>
-                    <div class="career__duration">1年2ヶ月</div>
+                    <div class="career__period">2025.04 – 2026.08</div>
+                    <div class="career__duration">1年4ヶ月</div>
                   </div>
                   <div>
                     <div class="career__head">
                       <h3 class="career__title">イベント・キッチンカー向けモバイルオーダープラットフォームの立ち上げ</h3>
                       <span class="career__role">代表 兼 リードエンジニア · 2名</span>
                     </div>
-                    <p class="career__desc">自社プロダクト「Mogupick」(来場者がスマートフォンで注文するモバイルオーダー)の企画・設計・開発を共同創業者と2名で担当。バックエンドは Rails API、フロントエンドは Next.js(Vercel デプロイ)で、来場者向けの注文アプリ・店舗向け管理画面・イベント主催者向け画面の3つを構成しました。開発に加えて営業も担当し、イベント会社やキッチンカープラットフォームの運営企業と実証実験を実施。導入店舗の運用サポートを通じて、運用負荷が最大の課題であることを確かめたうえで、2026年8月に事業を終了しました。</p>
+                    <p class="career__desc">来場者がスマートフォンで注文し、店舗が管理画面で受け付けるモバイルオーダー「Mogupick」を、共同創業者と2名で立ち上げました。来場者向けの注文アプリ・店舗向け管理画面・イベント主催者向け画面の3つを、Rails API と Next.js(Vercel)で構成。開発に加えて、営業と実証実験の運用サポートも担当しました。</p>
+                    <div class="career__cases">
+                      <span class="career__meta-label">代表的な取り組み</span>
+                      <div class="case">
+                        <h4 class="case__title">実証実験で店舗の運用負荷を確かめ、事業の休止を判断(2026)</h4>
+                        <dl class="case__body">
+                          <dt>状況</dt>
+                          <dd>イベント会社やキッチンカープラットフォームの運営企業は導入に関心を示し、1イベント・1店舗での実証実験まで進みました。一方で、導入した店舗が日々の運用を続けられるかは、まだ確かめられていませんでした。</dd>
+                          <dt>行動と判断</dt>
+                          <dd>
+                            <ul class="case__list">
+                              <li>営業と導入店舗の運用サポートを自分で担当し、店舗の使い方と困りごとを直接把握</li>
+                              <li>店舗向けに、本番前に操作を練習できるリハーサル出店、新規注文の Web Push・メール通知、POS と管理画面での在庫数表示の統一などを実装</li>
+                              <li>それでも店舗の日々の運用負荷が最大の課題として残り、解決には2名を超える体制が必要と判断</li>
+                            </ul>
+                          </dd>
+                          <dt>成果</dt>
+                          <dd>関心と課題の両方を実証実験で確かめたうえで、2026年8月から事業を休止しています。休止にあたっては、DB をスナップショットに退避して監視も外し、停止中の AWS の費用を抑える休止モードを Terraform で用意しました。</dd>
+                        </dl>
+                      </div>
+                    </div>
                     <div class="career__points">
-                      <span class="career__meta-label">主な実績</span>
+                      <span class="career__meta-label">その他の実績</span>
                       <ul class="career__points-list">
                         <li>Terraform で AWS(ECS / Lambda / API Gateway / CloudWatch / S3)をコード管理し、GitHub Actions によるデプロイパイプラインと、利用の少ない時間帯に環境を停止・起動するコスト抑制の自動化を構築</li>
-                        <li>Stripe Connect による決済・精算、Solid Queue による非同期処理、Resend によるメール配信の設計・実装</li>
+                        <li>Stripe Connect による決済・精算と Resend によるメール配信の設計・実装。Solid Queue のジョブの実装と、本番のテーブル管理・アップグレードなどの運用</li>
                         <li>rack-attack によるレート制限、N+1 クエリの解消などの安全・性能対策</li>
                         <li>仕様策定から実装・レビューまでを Claude Code 前提の開発フローで運用し、GitHub Actions 上でも Claude Code を実行</li>
                       </ul>
@@ -631,21 +651,101 @@
                   <div>
                     <div class="career__head">
                       <h3 class="career__title">教育系プラットフォームの開発保守</h3>
-                      <span class="career__role">開発メンバー · 5〜12名</span>
+                      <span class="career__role">開発メンバー · PdM・デザイナーを含む5〜12名</span>
                     </div>
-                    <p class="career__desc">学習管理プラットフォームサービスの開発・保守に5年以上継続して従事(SES 案件として開始し、フリーランス転向後も継続)。Rails + React / Next.js(TypeScript)による SPA 構成で、校舎向け Web と生徒向けアプリの両方について、仕様策定・設計から実装、運用までを担当しています。スクラム体制のもとアジャイル開発を実践し、BigQuery を用いたデータ分析基盤との連携にも対応。</p>
+                    <p class="career__desc">校舎向け Web と生徒向けアプリからなる学習管理プラットフォームの開発・保守に、5年以上継続して従事しています。構成は Rails API + React / Next.js(TypeScript)の SPA で、主にバックエンドを担当。2021年に SES として参画し、2022年からはフリーランスとして同じ案件を続けています。</p>
+                    <div class="career__roles">
+                      <span class="career__meta-label">役割の変化</span>
+                      <ol class="career__roles-list">
+                        <li class="career__role-step">
+                          <span class="career__role-period">2021.09〜</span>
+                          <span class="career__role-title">実装メンバーとして参画</span>
+                          <p class="career__role-body">SES として参画し、チケット単位の実装とコードレビューを担当。2022年にフリーランスに切り替えて継続し、取り込みジョブのデッドロックや生徒名の暗号化方式の移行など、データまわりの難しい課題を引き受けるようになりました。</p>
+                        </li>
+                        <li class="career__role-step">
+                          <span class="career__role-period">2023頃〜</span>
+                          <span class="career__role-title">新機能の設計を担当</span>
+                          <p class="career__role-body">ドメイン知識がついたことで、新機能の設計書を任されるようになりました。チーム全員で設計する「モブ設計」では、議論を主導する役回りが多くなりました。</p>
+                        </li>
+                        <li class="career__role-step">
+                          <span class="career__role-period">2024〜</span>
+                          <span class="career__role-title">性能改善を自分で起票</span>
+                          <p class="career__role-body">本番のモニタリングから遅い API を自分で見つけて起票し、原因の分析から改善までを担当するようになりました。</p>
+                        </li>
+                        <li class="career__role-step">
+                          <span class="career__role-period">直近</span>
+                          <span class="career__role-title">仕様書の作成から担当</span>
+                          <p class="career__role-body">AI 駆動開発の広がりで開発エンジニアが上流工程を担う体制になり、仕様書の作成から関わっています。Claude Code のスキルを整備して、チームの開発フローにも展開しています。</p>
+                        </li>
+                      </ol>
+                    </div>
+                    <div class="career__cases">
+                      <span class="career__meta-label">代表的な取り組み</span>
+                      <div class="case">
+                        <h4 class="case__title">遅い API を自分で見つけて改善(2024〜2026)</h4>
+                        <dl class="case__body">
+                          <dt>状況</dt>
+                          <dd>目立った問い合わせがなくても、本番のモニタリングでは、生徒数の多い校舎で一部の API の応答が数十秒から数分に達していました。</dd>
+                          <dt>行動と判断</dt>
+                          <dd>
+                            <ul class="case__list">
+                              <li>Datadog APM で見つけた遅い API は自分で起票し、実行計画とボトルネックのクエリを分析</li>
+                              <li>校舎の個別メッセージ分析 API は、サブクエリの結合を1本の集計クエリに書き換え</li>
+                              <li>校舎タイムラインの学習記録 API は、生徒1人を指定して呼ばれたときも校舎全体の記録を走査していたことを特定。対象の生徒数に応じて使うインデックスを切り替える形で修正</li>
+                              <li>インデックスの指定を外してデータベースの判断に任せる案は、過去に誤ったインデックスが選ばれて指定を入れた経緯があるため採用せず</li>
+                            </ul>
+                          </dd>
+                          <dt>成果</dt>
+                          <dd>個別メッセージ分析 API は、2,953件の集計にかかる時間が36秒から2秒に。99パーセンタイルで301秒かかっていたタイムライン API は、走査する範囲を生徒1人分に抑えました。画面が速くなったという校舎からのお礼も、CS 経由で届いています。</dd>
+                        </dl>
+                      </div>
+                      <div class="case">
+                        <h4 class="case__title">頻発する MySQL のデッドロックの解消(2022)</h4>
+                        <dl class="case__body">
+                          <dt>状況</dt>
+                          <dd>学習記録を取り込む非同期ジョブで、デッドロックが頻発するようになっていました。</dd>
+                          <dt>行動と判断</dt>
+                          <dd>
+                            <ul class="case__list">
+                              <li>調査を引き受け、InnoDB のロック情報から、既定の分離レベル(REPEATABLE READ)で取られるギャップロックが原因と特定。調査結果はチームの Discussion にまとめて共有</li>
+                              <li>根本の原因は MySQL 5.7.12 のバグで、本来はバージョンアップが望ましいと調査で整理。ただし本番 DB の更新は影響範囲と準備が大きく、すぐには行えないため、短期策を選択</li>
+                              <li>分離レベルを READ COMMITTED に変えるのは、問題のトランザクションだけに限定。ほかの処理の振る舞いを変えないため</li>
+                              <li>変更で起こりうる読み取りのずれ(別トランザクションの更新が見える)は、対象レコードの排他ロックを先に取ることで防止</li>
+                            </ul>
+                          </dd>
+                          <dt>成果</dt>
+                          <dd>デッドロックを解消しました。2023年には、負荷試験で別のジョブにデッドロックが大量に出た際も、ロック情報からユニークインデックス更新時のロック順序の競合が原因と特定し、排他ロックの事前取得で対処しています。</dd>
+                        </dl>
+                      </div>
+                      <div class="case">
+                        <h4 class="case__title">タグの論理削除の設計と段階リリース(2026)</h4>
+                        <dl class="case__body">
+                          <dt>状況</dt>
+                          <dd>オペレーターは使わなくなったタグを整理したいのに、手段は物理削除しかありませんでした。物理削除するとメッセージの宛先の参照が失われ、過去の一斉メッセージが見えなくなります。</dd>
+                          <dt>行動と判断</dt>
+                          <dd>
+                            <ul class="case__list">
+                              <li>プロポーザルに論点と却下した代替案を理由付きで整理し、PdM と合意してから着手</li>
+                              <li>関連レコードも削除する案は、影響箇所は減るものの、データを残すという目的と合わないため採用せず。関連は残し、参照する側で除外する方針に</li>
+                              <li>削除済みのタグは名前の先頭に「[削除済]」を付ける方式に。名前をそのまま残すと、過去のメッセージの画面で有効なタグと誤解されるため</li>
+                              <li>変更範囲が広いため4フェーズに分け、DB の変更も独立した Pull Request に。機能フラグで本番の挙動を変えずに段階的にマージし、確認してから一本化</li>
+                            </ul>
+                          </dd>
+                          <dt>成果</dt>
+                          <dd>2026年6月に論理削除へ一本化し、過去のメッセージを残したままタグを整理できるようにしました。</dd>
+                        </dl>
+                      </div>
+                    </div>
                     <div class="career__points">
-                      <span class="career__meta-label">主な実績</span>
+                      <span class="career__meta-label">その他の実績</span>
                       <ul class="career__points-list">
-                        <li>本番のモニタリング(Datadog APM)から遅い API を自ら見つけて起票し、実行計画の分析とクエリ・インデックスの改善で応答時間を最大約95%短縮。生徒数の増加で長時間化していた一括更新バッチも、activerecord-import による分割コミットに変更して短縮</li>
-                        <li>学習記録の取り込み・集計ジョブで頻発していた MySQL のデッドロックを、ロック待ち情報からギャップロックが原因と特定し、トランザクション分離レベルの変更と排他ロックの事前取得で解消</li>
-                        <li>新機能の仕様書・設計書を自ら作成してチームのレビューを取りまとめ、論理削除の導入などの設計方針は論点と理由を文書に整理して PdM と合意のうえ推進</li>
                         <li>外部の教材事業者向け連携 API の開発と、OpenAPI 定義・外部向けドキュメントの整備、サービス間 API へのトークン認証の導入を主導。LTI(学習ツール連携の標準規格)や Google Classroom との連携機能の実装にも参加</li>
                         <li>Rails 7 の Active Record Encryption を導入し、旧方式の暗号化処理が性能面のボトルネックになっていた生徒名の暗号化方式の移行(キー設定、二重書き込み、既存データの移行ジョブ、変更履歴への平文記録の防止)を担当</li>
+                        <li>生徒数の増加で長時間化していた学年の一括更新バッチを、activerecord-import による分割コミットに変更して短縮</li>
                         <li>CircleCI で変更差分に応じてテストと RuboCop を省略する仕組みを改善し、判定できないときは全件実行する安全側の設計に変更。失敗したテストだけを再実行できる設定も整備</li>
                         <li>結合テストケース作成などに使う Claude Code のスキルを整備してチームに展開。生徒の AI 質問履歴を校舎向け画面に取り込む API の設計・実装も担当</li>
-                        <li>参画以来、他メンバーの Pull Request を1,100件以上レビュー</li>
                         <li>障害時にログから影響を受けた校舎・生徒を特定して CS(カスタマーサポート)の個別連絡を支援し、原因と再発防止策をポストモーテムに整理</li>
+                        <li>自分で出した Pull Request は2022年の160件から2025年は365件に増加。他メンバーの Pull Request も1,100件以上レビュー</li>
                         <li>Rails 7.0 から 7.1、React 17 から 18、react-router v5 から v6、react-query v3 から v5、chart.js v2 から v4 などのメジャーアップデートと、Ruby・Next.js・TypeScript・Node.js の更新</li>
                       </ul>
                     </div>
@@ -722,7 +822,7 @@
                       <h3 class="career__title">アプリマーケティングプラットフォームのコア機能改修</h3>
                       <span class="career__role">開発メンバー · 4名</span>
                     </div>
-                    <p class="career__desc">アプリマーケティングプラットフォームのカスタマイズ開発(API)およびコア機能の改修に参画。Rails API の機能追加・改修と、Vue.js による SPA 構成の管理画面の改修を担当しました。AWS / Docker 環境での開発・テスト・運用も担当し、フルリモート体制でチーム開発を行いました。</p>
+                    <p class="career__desc">アプリマーケティングプラットフォームのカスタマイズ開発(API)およびコア機能の改修に参画。Rails API の機能追加・改修と、Vue.js による SPA 構成の管理画面の改修を担当しました。AWS / Docker 環境での開発・テスト・運用も担当しました。</p>
                     <p class="career__phases">
                       <span class="career__meta-label">担当工程</span>実装 / テスト / 保守・運用
                     </p>
@@ -750,7 +850,7 @@
                       <h3 class="career__title">ビジネスシーンにおける顧客との新たな非対面コミュニケーションツールの新規開発</h3>
                       <span class="career__role">サブリーダー · 3〜4名</span>
                     </div>
-                    <p class="career__desc">SMS 送信をトリガーとしたプッシュ型チャットサービスの新規開発にサブリーダーとして参画。チャット機能の技術選定を行い、Rails + ActionCable + Vue.js / TypeScript によるリアルタイムチャット機能を設計・実装しました。顧客とのやり取りを担当し、他メンバーのコードレビューとフォローも行いました。AWS(EC2 / S3)上への本番環境構築、Docker 導入、Sentry → Slack 通知による監視体制の整備まで、インフラ・運用面も担当しました。</p>
+                    <p class="career__desc">SMS 送信をトリガーとしたプッシュ型チャットサービスの新規開発にサブリーダーとして参画。チャット機能の技術選定を行い、Rails + ActionCable + Vue.js / TypeScript によるリアルタイムチャット機能を設計・実装しました。顧客との窓口を担当し、他メンバーのコードレビューとフォローも行いました。AWS(EC2 / S3)上への本番環境構築、Docker 導入、Sentry → Slack 通知による監視体制の整備まで、インフラ・運用面も担当しました。</p>
                     <p class="career__phases">
                       <span class="career__meta-label">担当工程</span>要件定義 / 基本設計 / 実装 / テスト / 保守・運用
                     </p>
@@ -808,7 +908,7 @@
                       <h3 class="career__title">TV番組広告登録ツールの刷新</h3>
                       <span class="career__role">リーダー · 3名</span>
                     </div>
-                    <p class="career__desc">社内業務ツールを Rails アプリケーションへ刷新するプロジェクトにリーダーとして参画。3名チームのマネジメントに加え、顧客折衝、スケジューリング・スコープ調整、要件定義から設計・開発・テスト(仕様書作成〜実施)・リリースまで全工程を主導しました。初めてリーダーを務めた案件で、リリースまで完了しました。</p>
+                    <p class="career__desc">社内業務ツールを Rails アプリケーションへ刷新するプロジェクトに、初めてリーダーとして参画。3名チームのマネジメントと顧客折衝、スケジュールとスコープの調整を担い、要件定義から設計・開発・テスト(仕様書作成〜実施)・リリースまでを2か月で進めました。</p>
                     <p class="career__phases">
                       <span class="career__meta-label">担当工程</span>要件定義 / 基本設計 / 詳細設計 / 実装 / テスト
                     </p>
@@ -881,7 +981,7 @@
                       <h3 class="career__title">大手金融システムの開発保守</h3>
                       <span class="career__role">開発＆保守メンバー · 4〜14名</span>
                     </div>
-                    <p class="career__desc">大手金融機関向け基幹システムの開発および保守に約3年間従事。Java / Oracle / JP1 を用いたバッチ処理やオンライン機能の設計・実装・テストを担当しました。顧客へのヒアリング用資料作成(仕様確認・工数根拠提示)、基本設計書、テスト設計書(単体・IT・ST)の作成を担当し、上流工程から保守運用までの工程に携わりました。</p>
+                    <p class="career__desc">大手金融機関向け基幹システムの開発および保守に約3年間従事。Java / Oracle / JP1 を用いたバッチ処理やオンライン機能の設計・実装・テストを担当しました。顧客へのヒアリング用資料(仕様確認・工数根拠の提示)、基本設計書、テスト設計書(単体・IT・ST)の作成も担当しました。</p>
                     <p class="career__phases">
                       <span class="career__meta-label">担当工程</span>要件定義 / 基本設計 / 実装 / テスト / 保守・運用
                     </p>
