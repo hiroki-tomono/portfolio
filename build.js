@@ -432,7 +432,7 @@ const renderCareer = () => {
         phase.subtitle
           ? `                <p class="career-phase__subtitle">${esc(phase.subtitle)}</p>`
           : null,
-        `                <p class="career-phase__range">${esc(phaseRange(entries))}</p>`,
+        `                <p class="career-phase__range">${esc(phase.range ?? phaseRange(entries))}</p>`,
         '              </div>',
         '              <div class="career-phase__body">',
         entries.map(renderCareerEntry).join('\n'),
